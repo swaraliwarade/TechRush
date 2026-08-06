@@ -1,0 +1,26 @@
+/* Minimal global stylesheet – no external imports */
+
+:root {
+  --background: oklch(0.992 0.004 240);
+  --foreground: oklch(0.145 0.015 245);
+  --primary: oklch(0.54 0.245 258);
+  --primary-foreground: oklch(0.99 0 0);
+}
+
+.dark {
+  --background: oklch(0.11 0.015 250);
+  --foreground: oklch(0.985 0.004 240);
+  --primary: oklch(0.62 0.2 255);
+  --primary-foreground: oklch(0.11 0.015 250);
+}
+
+/* Basic reset and typography */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}

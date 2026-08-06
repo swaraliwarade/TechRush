@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TrustPass Team Project Plan</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="pdf-style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">TrustPass Team Project Plan</h1>
+</header>
+<h1 id="trustpass-team-project-plan">TrustPass — Team Project Plan</h1>
+<h2 id="passwordless-authentication-for-bank-logins">Passwordless
+Authentication for Bank Logins</h2>
+<p><strong>Domain:</strong> Full-Stack Web Development<br />
+<strong>Team Size:</strong> 4 Members<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> August 2026</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-problem-statement--solution">Problem Statement &amp;
+Solution</a></li>
+<li><a href="#3-why-your-last-project-failed-to-integrate">Why Your Last
+Project Failed to Integrate</a></li>
+<li><a
+href="#4-architecture-decision--single-integrated-app">Architecture
+Decision — Single Integrated App</a></li>
+<li><a href="#5-team-structure--role-assignments">Team Structure &amp;
+Role Assignments</a></li>
+<li><a href="#6-member-1--integration-lead--database-owner">Member 1 —
+Integration Lead &amp; Database Owner</a></li>
+<li><a href="#7-member-2--retail-bank-passkey-authentication">Member 2 —
+Retail Bank Passkey Authentication</a></li>
+<li><a
+href="#8-member-3--commercial-bank-hardware-key-authentication">Member 3
+— Commercial Bank Hardware Key Authentication</a></li>
+<li><a href="#9-member-4--uiux-design-system--demo-polish">Member 4 —
+UI/UX, Design System &amp; Demo Polish</a></li>
+<li><a href="#10-shared-repository-structure">Shared Repository
+Structure</a></li>
+<li><a href="#11-git-workflow--integration-rules">Git Workflow &amp;
+Integration Rules</a></li>
+<li><a href="#12-environment--tooling-setup-all-members">Environment
+&amp; Tooling Setup (All Members)</a></li>
+<li><a href="#13-database-schema--api-contracts">Database Schema &amp;
+API Contracts</a></li>
+<li><a href="#14-4-week-sprint-timeline">4-Week Sprint Timeline</a></li>
+<li><a href="#15-daily-integration-checklist">Daily Integration
+Checklist</a></li>
+<li><a href="#16-judging-criteria--how-we-score-points">Judging Criteria
+— How We Score Points</a></li>
+<li><a href="#17-innovation--bonus-features-backlog">Innovation &amp;
+Bonus Features Backlog</a></li>
+<li><a href="#18-demo-script-5-minutes">Demo Script (5 Minutes)</a></li>
+<li><a href="#19-risk-register--mitigation">Risk Register &amp;
+Mitigation</a></li>
+<li><a href="#20-originality--plagiarism-guidelines">Originality &amp;
+Plagiarism Guidelines</a></li>
+<li><a href="#21-pre-submission-checklist">Pre-Submission
+Checklist</a></li>
+</ol>
+<hr />
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p><strong>TrustPass</strong> is a passwordless banking platform where
+users register once, enroll a passkey, then choose between two bank
+portals — each with a different authentication method:</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Portal</th>
+<th>Target User</th>
+<th>Auth Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TrustPass Retail Bank</strong></td>
+<td>Individuals &amp; families</td>
+<td>Biometric passkeys (Touch ID / Face ID / Windows Hello)</td>
+</tr>
+<tr>
+<td><strong>TrustPass Wealth &amp; Commercial</strong></td>
+<td>Businesses &amp; HNW clients</td>
+<td>FIDO2 hardware security keys (YubiKey)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Core principle for this team:</strong> Nobody builds an
+isolated frontend, backend, or API in a separate repo. Everyone works in
+<strong>one monorepo</strong>, on <strong>one running app</strong>,
+merging to <code>main</code> daily.</p>
+<p><strong>Current project status (already built):</strong> - Next.js 16
+registration UI - Supabase (PostgreSQL) account storage - Passkey
+enrollment simulation modal - Two-bank dashboard at
+<code>/dashboard</code></p>
+<p><strong>Remaining work:</strong> Real WebAuthn flows for both banks,
+login pages, session management, UI polish, and demo readiness.</p>
+<hr />
+<h2 id="problem-statement-solution">2. Problem Statement &amp;
+Solution</h2>
+<h3 id="problem">Problem</h3>
+<p>Traditional bank logins rely on passwords that are phishable, reused,
+and leaked in breaches. Banks need a secure, user-friendly
+alternative.</p>
+<h3 id="our-solution">Our Solution</h3>
+<p>A unified TrustPass identity layer that: 1. Registers the user with
+verified profile data (stored in PostgreSQL via Supabase) 2. Enrolls a
+device-bound passkey (WebAuthn / FIDO2) 3. Routes the user to the
+correct bank portal based on account type 4. Authenticates using
+<strong>different passwordless methods per bank</strong> — demonstrating
+flexibility for retail vs. commercial use cases</p>
+<h3 id="tech-stack-mandatory-chosen">Tech Stack (Mandatory +
+Chosen)</h3>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 47%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>React, Next.js, HTML/CSS/JS</td>
+<td>SSR, API routes in same repo, fast integration</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Tailwind CSS, shadcn/ui</td>
+<td>Consistent design system</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Next.js API Routes (Route Handlers)</td>
+<td>No separate Express server to merge</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>Supabase (PostgreSQL)</td>
+<td>SQL requirement met, free tier, RLS</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>WebAuthn / FIDO2 via <code>@simplewebauthn/server</code></td>
+<td>Industry standard for passkeys</td>
+</tr>
+<tr>
+<td>Optional</td>
+<td>Express.js micro-endpoint</td>
+<td>Only if WebAuthn ceremony needs it — avoid unless necessary</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Do NOT split into React frontend + Express backend + separate
+API repo.</strong> That caused your last integration failure.</p>
+</blockquote>
+<hr />
+<h2 id="why-your-last-project-failed-to-integrate">3. Why Your Last
+Project Failed to Integrate</h2>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr>
+<th>What went wrong</th>
+<th>What we do instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each person got separate AI prompts for frontend/backend/API</td>
+<td>One shared repo, one <code>README</code>, one
+<code>.env.example</code></td>
+</tr>
+<tr>
+<td>Different folder structures</td>
+<td>Fixed structure in Section 10 — no one creates their own</td>
+</tr>
+<tr>
+<td>API contracts defined late</td>
+<td>Contracts in Section 13 defined <strong>before</strong> coding</td>
+</tr>
+<tr>
+<td>No daily merges</td>
+<td>Merge to <code>main</code> every day by 6 PM</td>
+</tr>
+<tr>
+<td>Layer-based ownership (frontend person, backend person)</td>
+<td><strong>Feature-based ownership</strong> (retail auth, commercial
+auth, etc.)</td>
+</tr>
+<tr>
+<td>Different env variable names</td>
+<td>One <code>.env.example</code> — Integration Lead owns it</td>
+</tr>
+<tr>
+<td>No one responsible for “does it run together?”</td>
+<td>Member 1 is Integration Lead — non-negotiable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="architecture-decision-single-integrated-app">4. Architecture
+Decision — Single Integrated App</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    TrustPass Monorepo                        │
+│                  /banking/frontend/                          │
+├─────────────────────────────────────────────────────────────┤
+│  Next.js App Router                                          │
+│  ├── /                    → Registration + marketing         │
+│  ├── /dashboard           → Two-bank selection               │
+│  ├── /banks/retail        → Retail login (Member 2)          │
+│  ├── /banks/commercial    → Commercial login (Member 3)      │
+│  └── /api/*               → All server logic (shared)        │
+├─────────────────────────────────────────────────────────────┤
+│  Supabase (PostgreSQL)                                       │
+│  ├── accounts             → User registration data           │
+│  ├── webauthn_credentials → Passkey public keys              │
+│  └── auth_sessions        → Login session tokens (optional)  │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Rule:</strong> All HTTP endpoints live under
+<code>frontend/src/app/api/</code>. No separate Express app unless
+Integration Lead approves it in writing.</p>
+<hr />
+<h2 id="team-structure-role-assignments">5. Team Structure &amp; Role
+Assignments</h2>
+<p>We assign by <strong>vertical feature slice</strong>, not by
+layer.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 28%" />
+<col style="width: 15%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th>Member</th>
+<th>Role Title</th>
+<th>Owns</th>
+<th>Does NOT own</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Member 1</strong></td>
+<td>Integration Lead &amp; Database Owner</td>
+<td>Repo, Supabase, env, API contracts, PR merges, schema
+migrations</td>
+<td>UI styling details</td>
+</tr>
+<tr>
+<td><strong>Member 2</strong></td>
+<td>Retail Auth Engineer</td>
+<td><code>/banks/retail</code>, biometric WebAuthn register + login</td>
+<td>Commercial portal</td>
+</tr>
+<tr>
+<td><strong>Member 3</strong></td>
+<td>Commercial Auth Engineer</td>
+<td><code>/banks/commercial</code>, hardware key WebAuthn register +
+login</td>
+<td>Retail portal</td>
+</tr>
+<tr>
+<td><strong>Member 4</strong></td>
+<td>UI/UX &amp; Design Lead</td>
+<td>Shared components, responsive layout, animations, accessibility,
+demo slides</td>
+<td>Database schema changes (proposes, M1 approves)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="collaboration-matrix">Collaboration Matrix</h3>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr>
+<th>Task</th>
+<th style="text-align: center;">M1</th>
+<th style="text-align: center;">M2</th>
+<th style="text-align: center;">M3</th>
+<th style="text-align: center;">M4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supabase setup</td>
+<td style="text-align: center;"><strong>Lead</strong></td>
+<td style="text-align: center;">Support</td>
+<td style="text-align: center;">Support</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>API route scaffolding</td>
+<td style="text-align: center;"><strong>Lead</strong></td>
+<td style="text-align: center;">Contribute</td>
+<td style="text-align: center;">Contribute</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>WebAuthn server logic</td>
+<td style="text-align: center;">Review</td>
+<td style="text-align: center;"><strong>Lead (Retail)</strong></td>
+<td style="text-align: center;"><strong>Lead (Commercial)</strong></td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Dashboard bank card → portal navigation</td>
+<td style="text-align: center;">Review</td>
+<td style="text-align: center;">Wire retail</td>
+<td style="text-align: center;">Wire commercial</td>
+<td style="text-align: center;"><strong>Lead UI</strong></td>
+</tr>
+<tr>
+<td>Shared UI components</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">Use</td>
+<td style="text-align: center;">Use</td>
+<td style="text-align: center;"><strong>Lead</strong></td>
+</tr>
+<tr>
+<td>Daily merge to main</td>
+<td style="text-align: center;"><strong>Lead</strong></td>
+<td style="text-align: center;">PR</td>
+<td style="text-align: center;">PR</td>
+<td style="text-align: center;">PR</td>
+</tr>
+<tr>
+<td>Demo script</td>
+<td style="text-align: center;">Co-write</td>
+<td style="text-align: center;">Co-write</td>
+<td style="text-align: center;">Co-write</td>
+<td style="text-align: center;"><strong>Lead</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="member-1-integration-lead-database-owner">6. Member 1 —
+Integration Lead &amp; Database Owner</h2>
+<h3 id="responsibilities">Responsibilities</h3>
+<ul>
+<li>Own the GitHub repo and branch protection on <code>main</code></li>
+<li>Create and maintain Supabase project</li>
+<li>Execute and version-control all SQL migrations</li>
+<li>Define and enforce API request/response contracts</li>
+<li>Review and merge all PRs daily</li>
+<li>Keep <code>.env.example</code> up to date</li>
+<li>Run <code>npm run build</code> before every merge</li>
+<li>Resolve merge conflicts — final authority</li>
+</ul>
+<h3
+id="setup-steps-day-1-must-complete-before-others-start-coding">Setup
+Steps (Day 1 — Must complete before others start coding)</h3>
+<h4 id="step-1-repository-setup">Step 1: Repository setup</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> banking/frontend</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init   <span class="co"># if not already</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin <span class="op">&lt;</span>your-github-repo-url<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> main</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div>
+<h4 id="step-2-supabase-project">Step 2: Supabase project</h4>
+<ol type="1">
+<li>Go to <a href="https://supabase.com">supabase.com</a> → New
+Project</li>
+<li>Name: <code>trustpass-banking</code></li>
+<li>Region: closest to demo location</li>
+<li>Save database password securely (1Password / shared doc)</li>
+</ol>
+<h4 id="step-3-run-base-schema">Step 3: Run base schema</h4>
+<ol type="1">
+<li>Open Supabase → SQL Editor</li>
+<li>Paste contents of <code>frontend/schema.sql</code> → Run</li>
+<li>Verify <code>accounts</code> table exists in Table Editor</li>
+</ol>
+<h4 id="step-4-add-webauthn-schema-member-1-creates-others-use">Step 4:
+Add WebAuthn schema (Member 1 creates, others use)</h4>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Run in Supabase SQL Editor (Member 1)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> <span class="kw">table</span> <span class="cf">if</span> <span class="kw">not</span> <span class="kw">exists</span> <span class="kw">public</span>.webauthn_credentials (</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span> uuid <span class="kw">default</span> gen_random_uuid() <span class="kw">primary</span> <span class="kw">key</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    account_id uuid <span class="kw">not</span> <span class="kw">null</span> <span class="kw">references</span> <span class="kw">public</span>.accounts(<span class="kw">id</span>) <span class="kw">on</span> <span class="kw">delete</span> <span class="kw">cascade</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    credential_id text <span class="kw">not</span> <span class="kw">null</span> <span class="kw">unique</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    public_key text <span class="kw">not</span> <span class="kw">null</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    counter bigint <span class="kw">default</span> <span class="dv">0</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    device_type text <span class="kw">not</span> <span class="kw">null</span> <span class="kw">check</span> (device_type <span class="kw">in</span> (<span class="st">&#39;retail&#39;</span>, <span class="st">&#39;commercial&#39;</span>)),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    transports text[],</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    created_at timestamptz <span class="kw">default</span> now() <span class="kw">not</span> <span class="kw">null</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">alter</span> <span class="kw">table</span> <span class="kw">public</span>.webauthn_credentials <span class="kw">enable</span> <span class="kw">row</span> <span class="kw">level</span> security;</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> policy <span class="ot">&quot;Allow credential insert&quot;</span> <span class="kw">on</span> <span class="kw">public</span>.webauthn_credentials</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="kw">insert</span> <span class="kw">with</span> <span class="kw">check</span> (<span class="kw">true</span>);</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> policy <span class="ot">&quot;Allow credential read&quot;</span> <span class="kw">on</span> <span class="kw">public</span>.webauthn_credentials</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="kw">select</span> <span class="kw">using</span> (<span class="kw">true</span>);</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="kw">create</span> <span class="kw">index</span> credentials_account_id_idx <span class="kw">on</span> <span class="kw">public</span>.webauthn_credentials(account_id);</span></code></pre></div>
+<h4 id="step-5-environment-file">Step 5: Environment file</h4>
+<p>Create <code>frontend/.env.local</code> (never commit) and update
+<code>frontend/.env.example</code>:</p>
+<pre class="env"><code>NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_RP_NAME=TrustPass Bank
+WEBAUTHN_ORIGIN=http://localhost:3000</code></pre>
+<p>Share keys with team via secure channel (not WhatsApp
+screenshots).</p>
+<h4 id="step-6-install-webauthn-packages">Step 6: Install WebAuthn
+packages</h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> frontend</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install @simplewebauthn/server @simplewebauthn/browser</span></code></pre></div>
+<h4 id="step-7-create-shared-api-route-stubs">Step 7: Create shared API
+route stubs</h4>
+<p>Create empty route handlers so M2 and M3 can fill them in without
+file conflicts:</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Route</th>
+<th>Purpose</th>
+<th>Owner fills in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /api/webauthn/register/options</code></td>
+<td>Generate registration challenge</td>
+<td>M2 or M3</td>
+</tr>
+<tr>
+<td><code>POST /api/webauthn/register/verify</code></td>
+<td>Verify registration response</td>
+<td>M2 or M3</td>
+</tr>
+<tr>
+<td><code>POST /api/webauthn/login/options</code></td>
+<td>Generate login challenge</td>
+<td>M2 or M3</td>
+</tr>
+<tr>
+<td><code>POST /api/webauthn/login/verify</code></td>
+<td>Verify login response</td>
+<td>M2 or M3</td>
+</tr>
+</tbody>
+</table>
+<p>File layout:</p>
+<pre><code>frontend/src/app/api/webauthn/
+├── register/
+│   ├── options/route.ts
+│   └── verify/route.ts
+└── login/
+    ├── options/route.ts
+    └── verify/route.ts</code></pre>
+<h4 id="step-8-branch-protection">Step 8: Branch protection</h4>
+<p>On GitHub: Settings → Branches → Protect <code>main</code>: - Require
+PR before merge - Require 1 approval (Integration Lead)</p>
+<h3 id="deliverables">Deliverables</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Supabase project live with both
+tables</label></li>
+<li><label><input type="checkbox" /><code>.env.example</code>
+committed</label></li>
+<li><label><input type="checkbox" />API stub routes
+committed</label></li>
+<li><label><input type="checkbox" /><code>docs/API-CONTRACTS.md</code>
+written (see Section 13)</label></li>
+<li><label><input type="checkbox" />All 4 members can run
+<code>npm run dev</code> successfully</label></li>
+</ul>
+<h3 id="files-member-1-owns-exclusively">Files Member 1 owns
+exclusively</h3>
+<pre><code>frontend/schema.sql
+frontend/.env.example
+frontend/src/lib/supabase.ts
+frontend/src/app/api/register/route.ts
+docs/*</code></pre>
+<hr />
+<h2 id="member-2-retail-bank-passkey-authentication">7. Member 2 —
+Retail Bank Passkey Authentication</h2>
+<h3 id="responsibilities-1">Responsibilities</h3>
+<ul>
+<li>Build <code>/banks/retail</code> login page</li>
+<li>Implement real WebAuthn registration for retail (biometric
+passkey)</li>
+<li>Implement real WebAuthn login for retail</li>
+<li>Wire dashboard “Retail Bank” card → <code>/banks/retail</code></li>
+<li>Store credentials with <code>device_type = 'retail'</code></li>
+</ul>
+<h3 id="setup-steps">Setup Steps</h3>
+<h4 id="step-1-clone-and-run-day-1">Step 1: Clone and run (Day 1)</h4>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>repo-url<span class="op">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> banking/frontend</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env.local</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask M1 for real Supabase keys</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run dev</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Open http://localhost:3000 — confirm registration works</span></span></code></pre></div>
+<h4 id="step-2-study-webauthn-flow">Step 2: Study WebAuthn flow</h4>
+<pre><code>Registration:
+  Browser → GET/POST options (server generates challenge)
+  Browser → navigator.credentials.create() (biometric prompt)
+  Browser → POST verify (server validates + stores public key)
+
+Login:
+  Browser → POST login/options (server generates challenge)
+  Browser → navigator.credentials.get() (biometric prompt)
+  Browser → POST login/verify (server validates signature)</code></pre>
+<h4 id="step-3-create-retail-page">Step 3: Create retail page</h4>
+<pre><code>frontend/src/app/banks/retail/page.tsx        ← Login UI
+frontend/src/lib/webauthn/retail-client.ts      ← Browser-side helpers
+frontend/src/app/api/webauthn/register/options/route.ts  ← Add retail logic
+frontend/src/app/api/webauthn/login/options/route.ts     ← Add retail logic</code></pre>
+<h4 id="step-4-implement-registration-after-account-creation">Step 4:
+Implement registration (after account creation)</h4>
+<p>Modify <code>PasskeyModal.tsx</code> to call real WebAuthn instead of
+setTimeout simulation: 1. Call
+<code>POST /api/webauthn/register/options</code> with
+<code>{ accountId, deviceType: 'retail' }</code> 2. Call
+<code>startRegistration()</code> from
+<code>@simplewebauthn/browser</code> 3. Call
+<code>POST /api/webauthn/register/verify</code> with the result 4. On
+success → redirect to <code>/dashboard</code></p>
+<h4 id="step-5-implement-retail-login-page">Step 5: Implement retail
+login page</h4>
+<p>UI elements: - Email or Customer ID input - “Sign in with Passkey”
+button - Fingerprint icon + biometric prompt - Error states (no passkey
+found, verification failed) - Success → retail account overview page
+(simple placeholder OK)</p>
+<h4 id="step-6-authenticator-selection">Step 6: Authenticator
+selection</h4>
+<p>For retail, restrict to platform authenticators:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>authenticatorSelection<span class="op">:</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  authenticatorAttachment<span class="op">:</span> <span class="st">&#39;platform&#39;</span><span class="op">,</span>  <span class="co">// Touch ID, Face ID, Windows Hello</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  residentKey<span class="op">:</span> <span class="st">&#39;preferred&#39;</span><span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  userVerification<span class="op">:</span> <span class="st">&#39;required&#39;</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="deliverables-1">Deliverables</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Real passkey registration in
+PasskeyModal (retail path)</label></li>
+<li><label><input type="checkbox" /><code>/banks/retail</code> login
+page functional</label></li>
+<li><label><input type="checkbox" />Credentials stored in
+<code>webauthn_credentials</code> with
+<code>device_type='retail'</code></label></li>
+<li><label><input type="checkbox" />Dashboard retail card navigates to
+<code>/banks/retail</code></label></li>
+<li><label><input type="checkbox" />Works on Chrome + Safari (test
+both)</label></li>
+</ul>
+<h3 id="files-member-2-owns">Files Member 2 owns</h3>
+<pre><code>frontend/src/app/banks/retail/**
+frontend/src/lib/webauthn/retail-client.ts
+frontend/src/app/api/webauthn/**/route.ts  (shared — coordinate with M3 via PRs)
+frontend/src/components/PasskeyModal.tsx   (retail WebAuthn integration)</code></pre>
+<h3 id="integration-checkpoints-with-other-members">Integration
+checkpoints with other members</h3>
+<ul>
+<li><strong>M1:</strong> Schema for <code>webauthn_credentials</code>
+must exist before Day 2</li>
+<li><strong>M3:</strong> Split API routes by <code>deviceType</code>
+param — do not duplicate files</li>
+<li><strong>M4:</strong> Use shared <code>Button</code>,
+<code>Card</code>, <code>Input</code> components — do not create new
+ones</li>
+</ul>
+<hr />
+<h2 id="member-3-commercial-bank-hardware-key-authentication">8. Member
+3 — Commercial Bank Hardware Key Authentication</h2>
+<h3 id="responsibilities-2">Responsibilities</h3>
+<ul>
+<li>Build <code>/banks/commercial</code> login page</li>
+<li>Implement WebAuthn registration for commercial (cross-platform /
+hardware key)</li>
+<li>Implement WebAuthn login for commercial</li>
+<li>Wire dashboard “Commercial Bank” card →
+<code>/banks/commercial</code></li>
+<li>Store credentials with <code>device_type = 'commercial'</code></li>
+</ul>
+<h3 id="setup-steps-1">Setup Steps</h3>
+<h4 id="step-1-same-clonesetup-as-member-2-day-1">Step 1: Same
+clone/setup as Member 2 (Day 1)</h4>
+<h4 id="step-2-understand-hardware-key-differences">Step 2: Understand
+hardware key differences</h4>
+<p>Commercial bank uses <strong>cross-platform authenticators</strong>
+(YubiKey, USB security keys):</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>authenticatorSelection<span class="op">:</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  authenticatorAttachment<span class="op">:</span> <span class="st">&#39;cross-platform&#39;</span><span class="op">,</span>  <span class="co">// USB/NFC hardware keys</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  residentKey<span class="op">:</span> <span class="st">&#39;preferred&#39;</span><span class="op">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  userVerification<span class="op">:</span> <span class="st">&#39;discouraged&#39;</span><span class="op">,</span>  <span class="co">// Some YubiKeys don&#39;t support UV</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h4 id="step-3-create-commercial-page">Step 3: Create commercial
+page</h4>
+<pre><code>frontend/src/app/banks/commercial/page.tsx
+frontend/src/lib/webauthn/commercial-client.ts</code></pre>
+<h4 id="step-4-commercial-registration-flow">Step 4: Commercial
+registration flow</h4>
+<p>Option A: Separate enrollment step on commercial portal (user
+registers hardware key when first visiting commercial bank)</p>
+<p>Option B: During initial PasskeyModal, ask “Register hardware key for
+commercial access?” — recommended for demo clarity</p>
+<h4 id="step-5-commercial-login-page-ui">Step 5: Commercial login page
+UI</h4>
+<ul>
+<li>Professional/enterprise aesthetic (dark accents, building
+icons)</li>
+<li>“Insert your security key” instruction panel</li>
+<li>USB key icon animation while waiting</li>
+<li>Support WebAuthn <code>get()</code> with
+<code>allowCredentials</code></li>
+<li>Show last 4 chars of Customer ID on success</li>
+</ul>
+<h4 id="step-6-test-with-hardware">Step 6: Test with hardware</h4>
+<ul>
+<li>Borrow a YubiKey if available</li>
+<li>Fallback: Chrome WebAuthn virtual authenticator (DevTools → More
+Tools → WebAuthn)
+<ul>
+<li>Create virtual authenticator with <code>ctap2</code>,
+<code>usb</code>, <code>nfc</code> transports</li>
+</ul></li>
+</ul>
+<h3 id="deliverables-2">Deliverables</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" /><code>/banks/commercial</code> login
+page functional</label></li>
+<li><label><input type="checkbox" />Hardware key registration
+flow</label></li>
+<li><label><input type="checkbox" />Credentials stored with
+<code>device_type='commercial'</code></label></li>
+<li><label><input type="checkbox" />Dashboard commercial card navigates
+to <code>/banks/commercial</code></label></li>
+<li><label><input type="checkbox" />Tested with virtual or physical
+authenticator</label></li>
+</ul>
+<h3 id="files-member-3-owns">Files Member 3 owns</h3>
+<pre><code>frontend/src/app/banks/commercial/**
+frontend/src/lib/webauthn/commercial-client.ts
+frontend/src/app/api/webauthn/**/route.ts  (shared — use deviceType param)</code></pre>
+<h3 id="coordination-with-member-2">Coordination with Member 2</h3>
+<p>Both M2 and M3 use the <strong>same 4 API routes</strong>.
+Differentiate by request body:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;user@example.com&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;retail&quot;</span> <span class="fu">}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;user@example.com&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;commercial&quot;</span> <span class="fu">}</span></span></code></pre></div>
+<p><strong>Never create separate <code>/api/retail/</code> and
+<code>/api/commercial/</code> folders.</strong></p>
+<hr />
+<h2 id="member-4-uiux-design-system-demo-polish">9. Member 4 — UI/UX,
+Design System &amp; Demo Polish</h2>
+<h3 id="responsibilities-3">Responsibilities</h3>
+<ul>
+<li>Own visual consistency across all pages</li>
+<li>Ensure responsive design (mobile, tablet, desktop)</li>
+<li>Improve dashboard, bank portals, and registration UX</li>
+<li>Accessibility (ARIA labels, keyboard navigation, color
+contrast)</li>
+<li>Loading states, error states, empty states for all flows</li>
+<li>Demo presentation slides and script</li>
+<li>Favicon, page titles, meta tags</li>
+</ul>
+<h3 id="setup-steps-2">Setup Steps</h3>
+<h4 id="step-1-clone-and-audit-ui-day-1">Step 1: Clone and audit UI (Day
+1)</h4>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>repo-url<span class="op">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> banking/frontend</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="kw">&amp;&amp;</span> <span class="ex">npm</span> run dev</span></code></pre></div>
+<p>Open every page. Screenshot inconsistencies. Create a Figma or shared
+doc with: - Color palette (already in <code>globals.css</code>) -
+Typography scale - Spacing rules - Component inventory</p>
+<h4 id="step-2-component-inventory">Step 2: Component inventory</h4>
+<p>Existing shared components (extend, don’t duplicate):</p>
+<pre><code>frontend/src/components/ui/button.tsx
+frontend/src/components/ui/card.tsx
+frontend/src/components/ui/input.tsx
+frontend/src/components/ui/dialog.tsx</code></pre>
+<p>Create if missing:</p>
+<pre><code>frontend/src/components/ui/badge.tsx
+frontend/src/components/ui/spinner.tsx
+frontend/src/components/ui/toast.tsx (or use sonner)
+frontend/src/components/layout/PageHeader.tsx
+frontend/src/components/layout/PageBackground.tsx</code></pre>
+<h4 id="step-3-responsive-testing-matrix">Step 3: Responsive testing
+matrix</h4>
+<p>Test every page at: - 375px (iPhone SE) - 768px (iPad) - 1280px
+(Laptop) - 1920px (Desktop)</p>
+<p>Use Chrome DevTools device toolbar. Screenshot and file issues as
+GitHub Issues assigned to page owner.</p>
+<h4 id="step-4-wire-dashboard-navigation">Step 4: Wire dashboard
+navigation</h4>
+<p>Update <code>frontend/src/app/dashboard/page.tsx</code>: - Retail
+card click → <code>router.push('/banks/retail')</code> - Commercial card
+click → <code>router.push('/banks/commercial')</code> - Remove “coming
+soon” placeholder once M2/M3 pages exist</p>
+<h4 id="step-5-page-specific-polish">Step 5: Page-specific polish</h4>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Polish tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code> (Registration)</td>
+<td>Form validation animations, success confetti</td>
+</tr>
+<tr>
+<td><code>/dashboard</code></td>
+<td>Bank card hover glow, selected state</td>
+</tr>
+<tr>
+<td><code>/banks/retail</code></td>
+<td>Biometric scan animation, friendly copy</td>
+</tr>
+<tr>
+<td><code>/banks/commercial</code></td>
+<td>Enterprise dark theme, key insertion guide</td>
+</tr>
+<tr>
+<td>All pages</td>
+<td>Consistent header/footer, loading skeletons</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-6-accessibility-checklist">Step 6: Accessibility
+checklist</h4>
+<ul class="task-list">
+<li><label><input type="checkbox" />All inputs have
+<code>&lt;label&gt;</code> or <code>aria-label</code></label></li>
+<li><label><input type="checkbox" />Focus visible on keyboard
+tab</label></li>
+<li><label><input type="checkbox" />Color contrast ratio ≥
+4.5:1</label></li>
+<li><label><input type="checkbox" />Error messages linked via
+<code>aria-describedby</code></label></li>
+<li><label><input type="checkbox" />Modals trap focus</label></li>
+</ul>
+<h4 id="step-7-demo-assets">Step 7: Demo assets</h4>
+<p>Create <code>docs/demo/</code> folder: - <code>DEMO-SCRIPT.md</code>
+— step-by-step demo flow - <code>SLIDES.pdf</code> — 5-6 slides
+(problem, solution, architecture, demo, team) - Screen recording backup
+(OBS, 1080p)</p>
+<h3 id="deliverables-3">Deliverables</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />All pages responsive on 4
+breakpoints</label></li>
+<li><label><input type="checkbox" />Shared layout components used
+everywhere</label></li>
+<li><label><input type="checkbox" />Dashboard wired to both bank
+portals</label></li>
+<li><label><input type="checkbox" />Demo script and slides
+ready</label></li>
+<li><label><input type="checkbox" />Lighthouse accessibility score ≥
+90</label></li>
+</ul>
+<h3 id="files-member-4-owns">Files Member 4 owns</h3>
+<pre><code>frontend/src/components/ui/**
+frontend/src/components/layout/**
+frontend/src/app/globals.css (coordinate changes via PR)
+frontend/src/app/dashboard/page.tsx (navigation wiring)
+docs/demo/**
+public/favicon.ico</code></pre>
+<hr />
+<h2 id="shared-repository-structure">10. Shared Repository
+Structure</h2>
+<pre><code>banking/
+├── docs/
+│   ├── TrustPass-Team-Project-Plan.md    ← This document
+│   ├── API-CONTRACTS.md                  ← Member 1 maintains
+│   └── demo/
+│       ├── DEMO-SCRIPT.md
+│       └── SLIDES.pdf
+├── frontend/
+│   ├── .env.example
+│   ├── schema.sql
+│   ├── package.json
+│   ├── public/
+│   └── src/
+│       ├── app/
+│       │   ├── page.tsx                  ← Registration (done)
+│       │   ├── layout.tsx
+│       │   ├── globals.css
+│       │   ├── dashboard/
+│       │   │   └── page.tsx              ← Bank selection (done)
+│       │   ├── banks/
+│       │   │   ├── retail/
+│       │   │   │   └── page.tsx          ← Member 2
+│       │   │   └── commercial/
+│       │   │       └── page.tsx          ← Member 3
+│       │   └── api/
+│       │       ├── register/route.ts     ← Member 1 (done)
+│       │       └── webauthn/
+│       │           ├── register/
+│       │           │   ├── options/route.ts
+│       │           │   └── verify/route.ts
+│       │           └── login/
+│       │               ├── options/route.ts
+│       │               └── verify/route.ts
+│       ├── components/
+│       │   ├── RegistrationForm.tsx    ← Done
+│       │   ├── PasskeyModal.tsx          ← M2 upgrades to real WebAuthn
+│       │   ├── ui/                       ← Member 4
+│       │   └── layout/                   ← Member 4
+│       └── lib/
+│           ├── supabase.ts               ← Member 1
+│           └── webauthn/
+│               ├── server.ts             ← Shared server helpers
+│               ├── retail-client.ts      ← Member 2
+│               └── commercial-client.ts  ← Member 3
+└── backend/                              ← EMPTY — do not use unless approved</code></pre>
+<hr />
+<h2 id="git-workflow-integration-rules">11. Git Workflow &amp;
+Integration Rules</h2>
+<h3 id="branch-naming">Branch naming</h3>
+<pre><code>feature/retail-login          (Member 2)
+feature/commercial-login        (Member 3)
+feature/ui-polish-dashboard     (Member 4)
+chore/supabase-schema-v2        (Member 1)
+fix/register-validation         (anyone)</code></pre>
+<h3 id="daily-workflow-every-member-every-day">Daily workflow (every
+member, every day)</h3>
+<pre><code>1. git pull origin main                    ← Start of day
+2. git checkout -b feature/your-task       ← New branch
+3. Code your piece (only your owned files)
+4. npm run build                         ← Must pass locally
+5. git push + open PR to main
+6. Tag Integration Lead for review
+7. Merge before 6 PM                       ← End of day rule</code></pre>
+<h3 id="pr-rules">PR rules</h3>
+<ul>
+<li><strong>Max PR size:</strong> 400 lines changed (split if
+larger)</li>
+<li><strong>PR description must include:</strong> What changed, how to
+test, screenshot/video</li>
+<li><strong>No direct commits to <code>main</code></strong> except
+Integration Lead hotfixes</li>
+<li><strong>Conflicts:</strong> Person who causes conflict resolves it
+same day</li>
+</ul>
+<h3 id="communication">Communication</h3>
+<ul>
+<li><strong>Daily standup:</strong> 15 min on Google Meet / Discord
+<ul>
+<li>What I did yesterday</li>
+<li>What I’m doing today</li>
+<li>Any blockers</li>
+</ul></li>
+<li><strong>Shared Discord/Slack channel:</strong>
+<code>#trustpass-dev</code></li>
+<li><strong>Blockers &gt; 2 hours:</strong> Message Integration Lead
+immediately</li>
+</ul>
+<hr />
+<h2 id="environment-tooling-setup-all-members">12. Environment &amp;
+Tooling Setup (All Members)</h2>
+<h3 id="required-software">Required software</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js</td>
+<td>20 LTS</td>
+<td><a href="https://nodejs.org">nodejs.org</a></td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Latest</td>
+<td><a href="https://git-scm.com">git-scm.com</a></td>
+</tr>
+<tr>
+<td>VS Code or Cursor</td>
+<td>Latest</td>
+<td>IDE</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>Latest</td>
+<td>For WebAuthn testing</td>
+</tr>
+<tr>
+<td>GitHub account</td>
+<td>—</td>
+<td>Repo access</td>
+</tr>
+</tbody>
+</table>
+<h3 id="first-time-setup-all-4-members-day-1">First-time setup (all 4
+members — Day 1)</h3>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Clone</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>repo-url<span class="op">&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> banking/frontend</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Install dependencies</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Environment (get keys from Member 1)</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env.local</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit .env.local with real Supabase keys</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Verify app runs</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run dev</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># → http://localhost:3000 should show registration page</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Verify build</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># → Must complete with no errors</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Verify Supabase connection</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Register a test account → check Supabase Table Editor → accounts row appears</span></span></code></pre></div>
+<h3 id="vs-code-extensions-recommended">VS Code extensions
+(recommended)</h3>
+<ul>
+<li>ESLint</li>
+<li>Tailwind CSS IntelliSense</li>
+<li>Prettier</li>
+<li>GitLens</li>
+</ul>
+<hr />
+<h2 id="database-schema-api-contracts">13. Database Schema &amp; API
+Contracts</h2>
+<h3 id="member-1-creates-docsapi-contracts.md-with-these-specs">Member 1
+creates <code>docs/API-CONTRACTS.md</code> with these specs:</h3>
+<h4 id="post-apiregister">POST <code>/api/register</code></h4>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Request</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;fullName&quot;</span><span class="fu">:</span> <span class="st">&quot;John Doe&quot;</span><span class="fu">,</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;john@mail.com&quot;</span><span class="fu">,</span> <span class="dt">&quot;customerId&quot;</span><span class="fu">:</span> <span class="st">&quot;TP847192&quot;</span><span class="fu">,</span> <span class="dt">&quot;phoneNumber&quot;</span><span class="fu">:</span> <span class="st">&quot;+15550000000&quot;</span> <span class="fu">}</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">201</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">&quot;account&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span> <span class="dt">&quot;full_name&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span><span class="fu">,</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span><span class="fu">,</span> <span class="dt">&quot;customer_id&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span><span class="fu">,</span> <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span> <span class="fu">}</span> <span class="fu">}</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">400</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="st">&quot;An account with this email address is already registered.&quot;</span> <span class="fu">}</span></span></code></pre></div>
+<h4 id="post-apiwebauthnregisteroptions">POST
+<code>/api/webauthn/register/options</code></h4>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Request</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;accountId&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;retail&quot;</span> <span class="er">|</span> <span class="st">&quot;commercial&quot;</span> <span class="fu">}</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">200</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">/*</span> <span class="er">PublicKeyCredentialCreationOptionsJSON</span> <span class="er">*/</span> <span class="fu">}</span> <span class="fu">}</span></span></code></pre></div>
+<h4 id="post-apiwebauthnregisterverify">POST
+<code>/api/webauthn/register/verify</code></h4>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Request</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;accountId&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;retail&quot;</span> <span class="er">|</span> <span class="st">&quot;commercial&quot;</span><span class="fu">,</span> <span class="dt">&quot;response&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">/*</span> <span class="er">RegistrationResponseJSON</span> <span class="er">*/</span> <span class="fu">}</span> <span class="fu">}</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">200</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;verified&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">&quot;credentialId&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span> <span class="fu">}</span></span></code></pre></div>
+<h4 id="post-apiwebauthnloginoptions">POST
+<code>/api/webauthn/login/options</code></h4>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Request</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;john@mail.com&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;retail&quot;</span> <span class="er">|</span> <span class="st">&quot;commercial&quot;</span> <span class="fu">}</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">200</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">/*</span> <span class="er">PublicKeyCredentialRequestOptionsJSON</span> <span class="er">*/</span> <span class="fu">}</span> <span class="fu">}</span></span></code></pre></div>
+<h4 id="post-apiwebauthnloginverify">POST
+<code>/api/webauthn/login/verify</code></h4>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Request</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;john@mail.com&quot;</span><span class="fu">,</span> <span class="dt">&quot;deviceType&quot;</span><span class="fu">:</span> <span class="st">&quot;retail&quot;</span> <span class="er">|</span> <span class="st">&quot;commercial&quot;</span><span class="fu">,</span> <span class="dt">&quot;response&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">/*</span> <span class="er">AuthenticationResponseJSON</span> <span class="er">*/</span> <span class="fu">}</span> <span class="fu">}</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Response</span> <span class="dv">200</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">&quot;verified&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">&quot;account&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;uuid&quot;</span><span class="fu">,</span> <span class="dt">&quot;full_name&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span><span class="fu">,</span> <span class="dt">&quot;customer_id&quot;</span><span class="fu">:</span> <span class="st">&quot;...&quot;</span> <span class="fu">}</span> <span class="fu">}</span></span></code></pre></div>
+<blockquote>
+<p><strong>Rule:</strong> If any member needs to change a contract, they
+open a PR updating <code>API-CONTRACTS.md</code> first. Integration Lead
+approves. Then implementation follows.</p>
+</blockquote>
+<hr />
+<h2 id="week-sprint-timeline">14. 4-Week Sprint Timeline</h2>
+<h3 id="week-1-foundation-integration-first">Week 1 — Foundation
+(Integration First)</h3>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th>Day</th>
+<th>Member 1</th>
+<th>Member 2</th>
+<th>Member 3</th>
+<th>Member 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mon</td>
+<td>Supabase + schema + env + API stubs</td>
+<td>Clone, run app, read WebAuthn docs</td>
+<td>Clone, run app, read WebAuthn docs</td>
+<td>UI audit, design tokens doc</td>
+</tr>
+<tr>
+<td>Tue</td>
+<td>API-CONTRACTS.md + PR reviews</td>
+<td>PasskeyModal → real WebAuthn register (retail)</td>
+<td>Research hardware key flow</td>
+<td>Shared layout components</td>
+</tr>
+<tr>
+<td>Wed</td>
+<td>webauthn_credentials table + RLS</td>
+<td>Register/options + register/verify API (retail)</td>
+<td>Commercial-client.ts scaffold</td>
+<td>Dashboard → portal navigation</td>
+</tr>
+<tr>
+<td>Thu</td>
+<td>Merge all PRs, fix integration bugs</td>
+<td>Retail register end-to-end test</td>
+<td>Commercial register scaffold</td>
+<td>Responsive fixes on registration</td>
+</tr>
+<tr>
+<td>Fri</td>
+<td><strong>Integration test:</strong> register → passkey →
+dashboard</td>
+<td>Bug fixes</td>
+<td>Bug fixes</td>
+<td>Demo wireframes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Week 1 exit criteria:</strong> User can register, enroll a
+real biometric passkey, land on dashboard.</p>
+<h3 id="week-2-bank-portals">Week 2 — Bank Portals</h3>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th>Day</th>
+<th>Member 1</th>
+<th>Member 2</th>
+<th>Member 3</th>
+<th>Member 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mon</td>
+<td>Login API stubs + session handling</td>
+<td><code>/banks/retail</code> login page UI</td>
+<td><code>/banks/commercial</code> login page UI</td>
+<td>Retail page styling</td>
+</tr>
+<tr>
+<td>Tue</td>
+<td>PR reviews</td>
+<td>Retail login WebAuthn flow</td>
+<td>Commercial register flow</td>
+<td>Commercial page styling</td>
+</tr>
+<tr>
+<td>Wed</td>
+<td>Integration testing both portals</td>
+<td>Retail login end-to-end</td>
+<td>Commercial login end-to-end</td>
+<td>Loading/error states</td>
+</tr>
+<tr>
+<td>Thu</td>
+<td>Fix cross-portal bugs</td>
+<td>Edge cases (no passkey, wrong device)</td>
+<td>Virtual authenticator testing</td>
+<td>Mobile responsive pass</td>
+</tr>
+<tr>
+<td>Fri</td>
+<td><strong>Full flow test:</strong> register → dashboard → both
+logins</td>
+<td>Polish</td>
+<td>Polish</td>
+<td>Accessibility audit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Week 2 exit criteria:</strong> Both bank portals have working
+passwordless login.</p>
+<h3 id="week-3-polish-innovation">Week 3 — Polish &amp; Innovation</h3>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>All members</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mon</td>
+<td>Pick 2 bonus features from Section 17</td>
+</tr>
+<tr>
+<td>Tue–Thu</td>
+<td>Implement bonus features + UI polish</td>
+</tr>
+<tr>
+<td>Fri</td>
+<td>Full regression test on all browsers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="week-4-demo-prep">Week 4 — Demo Prep</h3>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>All members</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mon</td>
+<td>Fix all open bugs, run Lighthouse audits</td>
+</tr>
+<tr>
+<td>Tue</td>
+<td>Record demo video backup</td>
+</tr>
+<tr>
+<td>Wed</td>
+<td>Rehearse 5-min demo (3 runs minimum)</td>
+</tr>
+<tr>
+<td>Thu</td>
+<td>Final code freeze — bug fixes only</td>
+</tr>
+<tr>
+<td>Fri</td>
+<td><strong>Submit + present</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="daily-integration-checklist">15. Daily Integration
+Checklist</h2>
+<p>Integration Lead runs this every day at 6 PM:</p>
+<pre><code>[ ] git pull origin main on a clean machine
+[ ] npm install (no new dependency conflicts)
+[ ] npm run build — passes
+[ ] npm run dev — app loads
+[ ] Register new test account — succeeds
+[ ] Supabase accounts table — new row appears
+[ ] Passkey enrollment — works (or simulated if WebAuthn not ready yet)
+[ ] Dashboard — both bank cards visible
+[ ] /banks/retail — loads without error
+[ ] /banks/commercial — loads without error
+[ ] No console errors on any page
+[ ] All open PRs merged or have clear blockers noted</code></pre>
+<p>If any check fails → <strong>stop new feature work</strong>, fix
+integration first.</p>
+<hr />
+<h2 id="judging-criteria-how-we-score-points">16. Judging Criteria — How
+We Score Points</h2>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 41%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Our strategy</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Shared design system, one repo, one API pattern, daily merges</td>
+<td>M4 + M1</td>
+</tr>
+<tr>
+<td><strong>Completion</strong></td>
+<td>Week-by-week exit criteria (Section 14), pre-submission
+checklist</td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>Innovation &amp; Additional Features</strong></td>
+<td>Section 17 backlog — pick 2–3</td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>UI/UX Design</strong></td>
+<td>Premium fintech aesthetic, animations, clear auth flows</td>
+<td>M4</td>
+</tr>
+<tr>
+<td><strong>Integration</strong></td>
+<td>Single Next.js app, shared API contracts, daily integration
+test</td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>Responsiveness</strong></td>
+<td>Test 4 breakpoints, mobile-first bank login</td>
+<td>M4</td>
+</tr>
+<tr>
+<td><strong>Originality</strong></td>
+<td>Custom TrustPass branding, original copy, cite WebAuthn libraries
+only</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<h3 id="minimum-viable-demo-must-work-on-presentation-day">Minimum
+viable demo (must work on presentation day)</h3>
+<ol type="1">
+<li>Register account with form validation</li>
+<li>Enroll biometric passkey (real WebAuthn)</li>
+<li>See two-bank dashboard</li>
+<li>Login to Retail Bank with passkey</li>
+<li>Login to Commercial Bank with hardware key (or virtual
+authenticator)</li>
+<li>Show Supabase database with stored credentials</li>
+</ol>
+<hr />
+<h2 id="innovation-bonus-features-backlog">17. Innovation &amp; Bonus
+Features Backlog</h2>
+<p>Pick <strong>2–3</strong> after core flows work. Assign one owner
+each.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Impact</th>
+<th>Effort</th>
+<th>Suggested owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Session timeout + re-auth prompt</td>
+<td>Security</td>
+<td>Medium</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>“Remember this device” toggle</td>
+<td>UX</td>
+<td>Low</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>Login attempt audit log in Supabase</td>
+<td>Security</td>
+<td>Medium</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>QR code cross-device auth</td>
+<td>Innovation</td>
+<td>High</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>Dark mode toggle</td>
+<td>UI/UX</td>
+<td>Low</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>Account recovery via email OTP</td>
+<td>Completeness</td>
+<td>High</td>
+<td>M1 + M2</td>
+</tr>
+<tr>
+<td>Animated security score dashboard</td>
+<td>UI/UX</td>
+<td>Medium</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>Rate limiting on login API</td>
+<td>Security</td>
+<td>Medium</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>Multi-language support (EN + Hindi)</td>
+<td>UX</td>
+<td>Medium</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>Passkey management page (view/revoke keys)</td>
+<td>Completeness</td>
+<td>Medium</td>
+<td>M2 + M3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="demo-script-5-minutes">18. Demo Script (5 Minutes)</h2>
+<p><strong>Member 4 leads presentation. Others operate the
+demo.</strong></p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 34%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th>Time</th>
+<th>Action</th>
+<th>Speaker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:00–0:45</td>
+<td>“Passwords are broken in banking. TrustPass eliminates them.” Show
+problem slide.</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>0:45–1:30</td>
+<td>Architecture slide: one identity, two banks, two auth methods</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>1:30–2:30</td>
+<td><strong>Live demo:</strong> Register new account → form validation →
+Supabase row</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>2:30–3:15</td>
+<td>Enroll biometric passkey → show browser security prompt</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>3:15–3:45</td>
+<td>Dashboard → select Retail Bank → login with passkey</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>3:45–4:30</td>
+<td>Back to dashboard → Commercial Bank → login with security key</td>
+<td>M3</td>
+</tr>
+<tr>
+<td>4:30–5:00</td>
+<td>Show Supabase tables + Q&amp;A</td>
+<td>M1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Backup plan:</strong> If live WebAuthn fails, play
+pre-recorded video (M4 prepares).</p>
+<hr />
+<h2 id="risk-register-mitigation">19. Risk Register &amp;
+Mitigation</h2>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 29%" />
+<col style="width: 21%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebAuthn doesn’t work on demo laptop</td>
+<td>Medium</td>
+<td>High</td>
+<td>Pre-record video; test on demo device Week 3</td>
+</tr>
+<tr>
+<td>Merge conflicts break main</td>
+<td>High</td>
+<td>High</td>
+<td>Daily merges, small PRs, M1 reviews</td>
+</tr>
+<tr>
+<td>Members build duplicate components</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>M4 owns component library; PR review catches duplicates</td>
+</tr>
+<tr>
+<td>Supabase free tier limits</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Delete test rows; one project only</td>
+</tr>
+<tr>
+<td>No physical YubiKey available</td>
+<td>Medium</td>
+<td>Low</td>
+<td>Chrome virtual authenticator</td>
+</tr>
+<tr>
+<td>localhost WebAuthn RP ID issues</td>
+<td>Medium</td>
+<td>High</td>
+<td>Set <code>WEBAUTHN_RP_ID=localhost</code> in .env; deploy to Vercel
+if needed</td>
+</tr>
+<tr>
+<td>Member falls behind</td>
+<td>Medium</td>
+<td>High</td>
+<td>Daily standup blockers; reassign tasks immediately</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="originality-plagiarism-guidelines">20. Originality &amp;
+Plagiarism Guidelines</h2>
+<h3 id="allowed">Allowed</h3>
+<ul>
+<li>Official docs: <a href="https://webauthn.guide">WebAuthn Guide</a>,
+<a href="https://simplewebauthn.dev">SimpleWebAuthn docs</a></li>
+<li>shadcn/ui components (open source, MIT license)</li>
+<li>Supabase documentation patterns</li>
+<li>Your own code from this TrustPass project</li>
+</ul>
+<h3 id="not-allowed">Not allowed</h3>
+<ul>
+<li>Copying another team’s entire repo</li>
+<li>Using a commercial banking template without significant
+modification</li>
+<li>Submitting AI-generated code without understanding and customizing
+it</li>
+</ul>
+<h3 id="how-to-stay-original">How to stay original</h3>
+<ul>
+<li>Custom TrustPass branding (logo, colors, copy)</li>
+<li>Two-bank architecture is your unique angle</li>
+<li>Write your own API route logic (use SimpleWebAuthn library, not
+copy-paste tutorials verbatim)</li>
+<li>Document your architecture decisions in README</li>
+<li>Git history shows incremental team contributions</li>
+</ul>
+<h3 id="readme-attribution-section-add-before-submission">README
+attribution section (add before submission)</h3>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Attributions</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>UI components: shadcn/ui (MIT)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>WebAuthn: @simplewebauthn/server, @simplewebauthn/browser (MIT)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Database: Supabase (PostgreSQL)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Icons: lucide-react (ISC)</span></code></pre></div>
+<hr />
+<h2 id="pre-submission-checklist">21. Pre-Submission Checklist</h2>
+<h3 id="code-quality">Code quality</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" /><code>npm run build</code> passes
+with zero errors</label></li>
+<li><label><input type="checkbox" />No <code>console.log</code> left in
+production code</label></li>
+<li><label><input type="checkbox" /><code>.env.local</code> is NOT
+committed (check <code>.gitignore</code>)</label></li>
+<li><label><input type="checkbox" />All API routes return proper HTTP
+status codes</label></li>
+<li><label><input type="checkbox" />Error messages are
+user-friendly</label></li>
+</ul>
+<h3 id="functionality">Functionality</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Registration with validation
+works</label></li>
+<li><label><input type="checkbox" />Duplicate email/Customer ID shows
+error</label></li>
+<li><label><input type="checkbox" />Real WebAuthn passkey registration
+works</label></li>
+<li><label><input type="checkbox" />Dashboard shows both
+banks</label></li>
+<li><label><input type="checkbox" />Retail login with biometric
+works</label></li>
+<li><label><input type="checkbox" />Commercial login with
+hardware/virtual key works</label></li>
+<li><label><input type="checkbox" />Data visible in Supabase
+tables</label></li>
+</ul>
+<h3 id="uiux">UI/UX</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />Responsive on mobile (375px), tablet
+(768px), desktop (1280px)</label></li>
+<li><label><input type="checkbox" />Consistent header/footer on all
+pages</label></li>
+<li><label><input type="checkbox" />Loading states on all async
+actions</label></li>
+<li><label><input type="checkbox" />Error states on all
+forms</label></li>
+<li><label><input type="checkbox" />Lighthouse Performance ≥ 80,
+Accessibility ≥ 90</label></li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />README.md with setup
+instructions</label></li>
+<li><label><input type="checkbox" /><code>.env.example</code> with all
+required variables</label></li>
+<li><label><input type="checkbox" /><code>schema.sql</code> up to
+date</label></li>
+<li><label><input type="checkbox" /><code>docs/API-CONTRACTS.md</code>
+matches actual API</label></li>
+<li><label><input type="checkbox" />Demo script rehearsed 3+
+times</label></li>
+</ul>
+<h3 id="submission">Submission</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />GitHub repo link ready (public or
+judges have access)</label></li>
+<li><label><input type="checkbox" />Deployed URL (Vercel recommended —
+free tier)</label></li>
+<li><label><input type="checkbox" />Demo video uploaded as
+backup</label></li>
+<li><label><input type="checkbox" />Team member contributions visible in
+Git history</label></li>
+</ul>
+<hr />
+<h2 id="quick-reference-card">Quick Reference Card</h2>
+<pre><code>REPO:        banking/frontend/  (single Next.js app)
+DATABASE:    Supabase PostgreSQL
+AUTH:        WebAuthn via @simplewebauthn
+MERGE:       Daily to main by 6 PM
+PR SIZE:     Max 400 lines
+CONTRACTS:   docs/API-CONTRACTS.md (change before code)
+INTEGRATION: Member 1 runs checklist daily
+DEMO:        Register → Passkey → Dashboard → 2 Logins</code></pre>
+<hr />
+<p><em>TrustPass Team — Passwordless Authentication for Bank
+Logins</em><br />
+<em>Document maintained by Integration Lead (Member 1)</em></p>
+</body>
+</html>
