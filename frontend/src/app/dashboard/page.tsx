@@ -11,12 +11,8 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-import { AccountHeaderMenu } from "@/components/AccountHeaderMenu"
-import { BalanceCard } from "@/components/BalanceCard"
-import { TransactionModal } from "@/components/TransactionModal"
-import { TransactionHistory, Transaction } from "@/components/TransactionHistory"
-import { RewardsSection } from "@/components/RewardsSection"
-import { DeviceHistoryModal } from "@/components/DeviceHistoryModal"
+import { AuthGuard } from "@/components/AuthGuard"
+import { useAuth } from "@/app/context/AuthContext"
 
 type BankId = "retail" | "commercial"
 
@@ -79,6 +75,15 @@ const INITIAL_TRANSACTIONS: Transaction[] = [
 ]
 
 export default function DashboardPage() {
+  return (
+    <AuthGuard requireStep="dashboard">
+      <DashboardContent />
+    </AuthGuard>
+  )
+}
+
+function DashboardContent() {
+  const { session } = useAuth()
   const [customerName, setCustomerName] = React.useState<string | null>(null)
   const [customerId, setCustomerId] = React.useState<string>("TP-849102")
   const [email, setEmail] = React.useState<string>("customer@trustpass.bank")
@@ -98,6 +103,7 @@ export default function DashboardPage() {
   const [txModalMode, setTxModalMode] = React.useState<"send" | "deposit">("send")
 
   React.useEffect(() => {
+<<<<<<< Updated upstream
     const storedName = sessionStorage.getItem("trustpass_customer_name")
     const storedId = sessionStorage.getItem("trustpass_customer_id") || sessionStorage.getItem("trustpass_account_id")
     const storedEmail = sessionStorage.getItem("trustpass_customer_email")
@@ -110,6 +116,22 @@ export default function DashboardPage() {
     if (storedPhone) setPhone(storedPhone)
     if (storedBank) setSelectedBank(storedBank)
   }, [])
+=======
+    if (session?.account?.full_name) {
+      setCustomerName(session.account.full_name)
+      sessionStorage.setItem("trustpass_customer_name", session.account.full_name)
+      sessionStorage.setItem("trustpass_account_id", session.account.id)
+      sessionStorage.setItem("trustpass_customer_email", session.account.email)
+      sessionStorage.setItem("trustpass_customer_id", session.account.customer_id)
+      if (session.account.phone_number) {
+        sessionStorage.setItem("trustpass_customer_phone", session.account.phone_number)
+      }
+    } else {
+      const storedName = sessionStorage.getItem("trustpass_customer_name")
+      if (storedName) setCustomerName(storedName)
+    }
+  }, [session])
+>>>>>>> Stashed changes
 
   const totalBalance = checkingBalance + savingsBalance
 

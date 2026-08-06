@@ -85,9 +85,10 @@ export function SignInForm() {
     }
     setIsLoading(true)
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(values),
       })
       const data = await response.json()
@@ -96,10 +97,17 @@ export function SignInForm() {
         setIsLoading(false)
         return
       }
+<<<<<<< Updated upstream
       sessionStorage.setItem("trustpass_customer_name", data.account.full_name || "Demo User")
       sessionStorage.setItem("trustpass_customer_email", data.account.email || values.email)
       sessionStorage.setItem("trustpass_customer_id", data.account.customer_id || values.customerId)
       router.push("/dashboard")
+=======
+      if (data.devVerifyUrl) {
+        console.info("[Dev] Email verification link:", data.devVerifyUrl)
+      }
+      router.push("/signin/verify-email")
+>>>>>>> Stashed changes
     } catch {
       setSubmitError("Network connection failed. Please try again.")
       setIsLoading(false)

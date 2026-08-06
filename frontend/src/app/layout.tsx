@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/app/context/AuthContext";
 
 // Removed next/font/google to avoid external font fetching in production builds.
 // Using system sans-serif stack; you can add local fonts in globals.css if desired.
