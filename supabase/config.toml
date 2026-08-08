@@ -1,0 +1,15 @@
+project_id = "nqkgjwylpwfhibfuzwke"
+
+# Sign-in callers have no session yet, and the publishable key (sb_publishable_…)
+# is not a JWT, so gateway verification would reject every request before the
+# function runs. Pinned here so a later `functions deploy` without the
+# --no-verify-jwt flag cannot silently break sign-in.
+[functions.signin-request]
+verify_jwt = false
+
+[functions.signin-verify]
+verify_jwt = false
+
+# This one is only ever called by a signed-in user, so keep verification on.
+[functions.send-pin-briefing]
+verify_jwt = true
