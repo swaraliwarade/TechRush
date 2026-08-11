@@ -121,14 +121,14 @@ export function ChooseAccountType({
                       className={cn(
                         'grid size-10 place-items-center rounded-xl',
                         active
-                          ? 'accent-gradient text-ink-950'
+                          ? 'accent-gradient text-on-accent'
                           : 'bg-white/6 text-mist-300',
                       )}
                     >
                       <Icon size={19} />
                     </span>
                     {active && (
-                      <span className="accent-gradient grid size-5 place-items-center rounded-full text-ink-950">
+                      <span className="accent-gradient grid size-5 place-items-center rounded-full text-on-accent">
                         <Check size={12} strokeWidth={3.5} />
                       </span>
                     )}

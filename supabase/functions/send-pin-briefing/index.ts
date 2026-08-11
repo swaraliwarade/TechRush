@@ -29,26 +29,26 @@ const json = (body: unknown, status = 200) =>
 
 function briefingHtml(): string {
   return `
-<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0a0709;padding:32px 12px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#050a13;padding:32px 12px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   <tr><td align="center">
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:480px;background-color:#161215;border:1px solid #262027;border-radius:20px;padding:32px;">
-      <tr><td style="font-size:18px;font-weight:600;color:#f6f2f5;padding-bottom:20px;">TrustPass</td></tr>
-      <tr><td style="font-size:20px;font-weight:600;color:#f6f2f5;padding-bottom:16px;">About your two PINs</td></tr>
-      <tr><td style="font-size:14px;line-height:23px;color:#b8adb6;padding-bottom:16px;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:480px;background-color:#0e1729;border:1px solid #1d2b47;border-radius:20px;padding:32px;">
+      <tr><td style="font-size:18px;font-weight:600;color:#edf4ff;padding-bottom:20px;">TrustPass</td></tr>
+      <tr><td style="font-size:20px;font-weight:600;color:#edf4ff;padding-bottom:16px;">About your two PINs</td></tr>
+      <tr><td style="font-size:14px;line-height:23px;color:#a8bad8;padding-bottom:16px;">
         You just set up two PINs. They behave differently, and the difference matters.
       </td></tr>
-      <tr><td style="background-color:#0a0709;border:1px solid #262027;border-radius:16px;padding:18px;">
-        <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#f6f2f5;">Your first PIN</p>
-        <p style="margin:0;font-size:13px;line-height:21px;color:#8d8290;">
+      <tr><td style="background-color:#050a13;border:1px solid #1d2b47;border-radius:16px;padding:18px;">
+        <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#edf4ff;">Your first PIN</p>
+        <p style="margin:0;font-size:13px;line-height:21px;color:#7d92b4;">
           Opens your vault normally and shows your real balance and full transaction history.
           This is the one to use day to day.
         </p>
       </td></tr>
       <tr><td style="padding-top:12px;">
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0a0709;border:1px solid #4a2b3d;border-radius:16px;padding:18px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#050a13;border:1px solid #163f3c;border-radius:16px;padding:18px;">
           <tr><td>
-            <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#f6f2f5;">Your second PIN</p>
-            <p style="margin:0;font-size:13px;line-height:21px;color:#8d8290;">
+            <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#edf4ff;">Your second PIN</p>
+            <p style="margin:0;font-size:13px;line-height:21px;color:#7d92b4;">
               Opens the vault to a safe view instead &mdash; a low balance and an ordinary-looking
               history that is not your real account. Use it if you are ever pressured or forced to
               open your account in front of someone.
@@ -56,11 +56,11 @@ function briefingHtml(): string {
           </td></tr>
         </table>
       </td></tr>
-      <tr><td style="font-size:14px;line-height:23px;color:#b8adb6;padding-top:20px;">
+      <tr><td style="font-size:14px;line-height:23px;color:#a8bad8;padding-top:20px;">
         The app looks and behaves identically either way. Nobody watching your screen can tell
         which PIN you entered. Entering the second one quietly notifies our security team.
       </td></tr>
-      <tr><td style="font-size:13px;line-height:21px;color:#8d8290;padding-top:20px;border-top:1px solid #262027;margin-top:20px;">
+      <tr><td style="font-size:13px;line-height:21px;color:#7d92b4;padding-top:20px;border-top:1px solid #1d2b47;margin-top:20px;">
         Keep this email somewhere private, or delete it once you have memorised both PINs.
         This explanation appears nowhere inside the app.
       </td></tr>

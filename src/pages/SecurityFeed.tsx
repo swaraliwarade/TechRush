@@ -2,6 +2,7 @@ import {
   Activity,
   KeyRound,
   Lock,
+  MapPin,
   ShieldAlert,
   ShieldCheck,
   Siren,
@@ -48,6 +49,27 @@ const eventMeta: Record<string, { label: string; detail: string; icon: LucideIco
     detail: 'Access PIN accepted',
     icon: KeyRound,
   },
+  impossible_travel_detected: {
+    label: 'Impossible travel',
+    detail: 'Two sign-ins too far apart for the time between them — possible hijacked session',
+    icon: Siren,
+  },
+  impossible_travel_verified: {
+    label: 'Impossible travel verified',
+    detail: 'The account holder confirmed the flagged sign-in with their passkey',
+    icon: ShieldCheck,
+  },
+}
+
+/** "Mumbai, India → Sydney, Australia · 9,512 km" from an event's detail. */
+function travelDetail(event: SecurityEvent): string | null {
+  const detail = event.detail
+  if (!detail || typeof detail.from !== 'string' || typeof detail.to !== 'string') return null
+  const distance =
+    typeof detail.distance_km === 'number'
+      ? ` · ${detail.distance_km.toLocaleString('en-IN')} km`
+      : ''
+  return `${detail.from} → ${detail.to}${distance}`
 }
 
 const severityTone: Record<Severity, 'loss' | 'warn' | 'neutral'> = {
@@ -122,6 +144,17 @@ function EventRow({ event, isNew }: { event: SecurityEvent; isNew: boolean }) {
           <Badge tone={severityTone[event.severity]}>{event.severity}</Badge>
         </div>
         <p className="mt-1 text-xs leading-relaxed text-mist-400">{meta.detail}</p>
+        {travelDetail(event) && (
+          <p
+            className={cn(
+              'mt-1 flex items-center gap-1.5 text-xs font-medium',
+              critical ? 'text-loss-400' : 'text-gain-400',
+            )}
+          >
+            <MapPin size={12} className="shrink-0" />
+            <span className="truncate">{travelDetail(event)}</span>
+          </p>
+        )}
         <p className="mt-1.5 truncate text-xs text-mist-500">
           {event.user_agent ? describeDevice(event.user_agent).label : 'Unknown device'}
           {event.ip_prefix && event.ip_prefix !== 'unknown' && ` · ${event.ip_prefix}.x`}
@@ -288,6 +321,14 @@ export function SecurityFeed() {
               <span>
                 <span className="text-mist-50">Vault unlock</span> — every successful entry is
                 logged, so routine and escalated activity sit in the same stream.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <MapPin size={15} className="mt-0.5 shrink-0 text-loss-400" />
+              <span>
+                <span className="text-mist-50">Impossible travel</span> — a sign-in too far from
+                the previous one for the time between them raises a critical alert and asks for
+                passkey re-verification.
               </span>
             </li>
           </ul>

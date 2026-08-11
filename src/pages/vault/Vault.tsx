@@ -21,7 +21,7 @@ function VaultHeader({ remainingMs, onLock }: { remainingMs: number; onLock: () 
   return (
     <div className="glass-card flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5">
       <div className="flex min-w-0 items-center gap-3">
-        <span className="accent-gradient grid size-10 shrink-0 place-items-center rounded-xl text-ink-950">
+        <span className="accent-gradient grid size-10 shrink-0 place-items-center rounded-xl text-on-accent">
           <Unlock size={18} />
         </span>
         <div className="min-w-0">

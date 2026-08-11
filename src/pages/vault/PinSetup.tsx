@@ -126,7 +126,7 @@ export function PinSetup({
       >
         <div className="w-full max-w-md">
           <Card className="p-6 sm:p-8" glow>
-            <span className="accent-gradient grid size-12 place-items-center rounded-2xl text-ink-950">
+            <span className="accent-gradient grid size-12 place-items-center rounded-2xl text-on-accent">
               <ShieldCheck size={23} strokeWidth={2.2} />
             </span>
 

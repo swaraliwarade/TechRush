@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Freebuff tool state (SQLite DB — must not be scanned as source or committed)
+.freebuff
+
 # Env / secrets
 .env
 .env.local

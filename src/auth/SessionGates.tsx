@@ -9,6 +9,7 @@ import { Wordmark } from '@/components/layout/Sidebar'
 import { checkDevice } from '@/lib/devices'
 import { fetchProfile, type Profile } from '@/lib/profile'
 import { retryTransient } from '@/lib/retry'
+import { applyTheme } from '@/lib/theme'
 import { readSignupIntent } from '@/lib/signupIntent'
 import { ChooseAccountType } from '@/pages/auth/ChooseAccountType'
 import { RegisterPasskeyStep } from '@/pages/auth/RegisterPasskeyStep'
@@ -74,7 +75,11 @@ export function SessionGates({ children }: { children: (profile: Profile) => Rea
 
     retryTransient(() => fetchProfile(userId))
       .then((result) => {
-        if (active) setProfile(result)
+        if (!active) return
+        setProfile(result)
+        // Follow the account's saved appearance across devices. The device's
+        // own copy (applied in main.tsx) wins until the profile arrives.
+        if (result?.theme) applyTheme(result.theme)
       })
       .catch((err) => {
         if (active) setError(readableAuthError(err))

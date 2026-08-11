@@ -10,6 +10,8 @@ export type SecurityEvent = {
   severity: Severity
   ip_prefix: string | null
   user_agent: string | null
+  /** Event-specific payload, e.g. the two locations on an impossible-travel event. */
+  detail: Record<string, unknown> | null
   created_at: string
 }
 

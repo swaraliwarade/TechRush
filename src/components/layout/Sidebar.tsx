@@ -39,7 +39,7 @@ function NavRow({ item, onNavigate }: { item: NavItem; onNavigate?: () => void }
         cn(
           'focus-ring flex items-center gap-3 rounded-full px-4 py-3 text-sm transition',
           isActive
-            ? 'accent-gradient font-semibold text-ink-950'
+            ? 'accent-gradient font-semibold text-on-accent'
             : 'text-mist-300 hover:bg-white/6 hover:text-mist-50',
         )
       }
@@ -57,9 +57,13 @@ function NavRow({ item, onNavigate }: { item: NavItem; onNavigate?: () => void }
 export function Wordmark() {
   return (
     <div className="flex items-center gap-2.5 px-2">
-      <span className="accent-gradient grid size-8 place-items-center rounded-xl text-ink-950">
-        <ShieldCheck size={18} strokeWidth={2.5} />
-      </span>
+      <img
+        src="/trustpass-logo.png"
+        alt=""
+        width={32}
+        height={32}
+        className="size-8 shrink-0 rounded-lg object-cover"
+      />
       <span className="text-lg font-semibold tracking-tight">TrustPass</span>
     </div>
   )

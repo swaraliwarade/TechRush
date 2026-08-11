@@ -49,7 +49,7 @@ export function Support() {
 
       <Card className="p-5 sm:p-6" glow>
         <CardHeader title="Contact" />
-        <span className="accent-gradient mt-5 grid size-11 place-items-center rounded-2xl text-ink-950">
+        <span className="accent-gradient mt-5 grid size-11 place-items-center rounded-2xl text-on-accent">
           <LifeBuoy size={20} />
         </span>
         <p className="mt-4 text-sm leading-relaxed text-mist-400">

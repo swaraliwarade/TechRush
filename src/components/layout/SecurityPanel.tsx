@@ -1,5 +1,6 @@
 import { Check, Fingerprint, Laptop, Smartphone, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { AnimatedNumber } from '@/components/motion/AnimatedNumber'
 import { cn } from '@/lib/cn'
 import { isMobileDevice } from '@/lib/device'
 import { useSecurity } from '@/security/SecurityProvider'
@@ -31,7 +32,11 @@ export function SecurityScoreCard({ lastSignIn }: { lastSignIn?: string | null }
       </div>
 
       <p className="mt-1 text-3xl font-bold tracking-tight tabular-nums">
-        {loading ? '—' : score.value}
+        {loading ? (
+          '—'
+        ) : (
+          <AnimatedNumber value={score.value} format={(v) => String(Math.round(v))} duration={1} />
+        )}
         <span className="ml-1 text-sm font-medium text-mist-500">/100</span>
       </p>
 

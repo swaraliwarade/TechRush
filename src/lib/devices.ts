@@ -51,3 +51,15 @@ export async function revokeDevice(id: string) {
   const { error } = await supabase.from('trusted_devices').delete().eq('id', id)
   if (error) throw error
 }
+
+/**
+ * Revokes every trusted device except the one making the call. The current
+ * device is identified server-side from the request headers (the same
+ * fingerprint device_check() uses), so the caller can't exempt an arbitrary
+ * device. Returns how many devices were revoked.
+ */
+export async function revokeOtherDevices(): Promise<number> {
+  const { data, error } = await supabase.rpc('device_revoke_others')
+  if (error) throw error
+  return (data as number) ?? 0
+}
