@@ -1,16 +1,18 @@
 export type CardMapping = { letter: string; value: string }[]
 
 /**
- * Placeholder A–F grid until real per-account mappings exist. One digit per
- * letter — each letter maps to exactly one keypad tap in the unlock challenge.
+ * Placeholder A–F grid until real per-account mappings exist. One digit from
+ * 0–9 per letter — six distinct digits, fully randomized (this grid also sits
+ * on the account's card). Each letter maps to exactly one keypad tap in the
+ * unlock challenge.
  */
 export const PLACEHOLDER_MAPPING: CardMapping = [
-  { letter: 'A', value: '1' },
-  { letter: 'B', value: '2' },
-  { letter: 'C', value: '3' },
+  { letter: 'A', value: '0' },
+  { letter: 'B', value: '6' },
+  { letter: 'C', value: '7' },
   { letter: 'D', value: '4' },
-  { letter: 'E', value: '5' },
-  { letter: 'F', value: '6' },
+  { letter: 'E', value: '9' },
+  { letter: 'F', value: '5' },
 ]
 
 /** Fisher–Yates shuffle — used for the challenge letters. */
