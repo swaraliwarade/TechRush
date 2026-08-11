@@ -1,23 +1,11 @@
-import {
-  ArrowDownLeft,
-  ArrowUpRight,
-  Car,
-  CreditCard,
-  Heart,
-  Home,
-  Repeat,
-  ShoppingBag,
-  ShoppingCart,
-  Sparkles,
-  Tv,
-  UtensilsCrossed,
-  Wallet,
-  WashingMachine,
-  Zap,
-  type LucideIcon,
-} from 'lucide-react'
+import { ArrowDownLeft, ArrowUpRight, CreditCard, Sparkles } from 'lucide-react'
 import { useMemo, useState, type ReactNode } from 'react'
 import { BalanceChart } from '@/components/charts/BalanceChart'
+import { TransactionRow } from '@/components/account/TransactionRow'
+import { categoryIcons } from '@/lib/transactionIcons'
+import { AnimatedNumber } from '@/components/motion/AnimatedNumber'
+import { Reveal } from '@/components/motion/Reveal'
+import { cn } from '@/lib/cn'
 import { Badge } from '@/components/ui/Badge'
 import { Card, CardHeader } from '@/components/ui/Card'
 import { PillTabs } from '@/components/ui/PillTabs'
@@ -32,51 +20,6 @@ import {
 } from '@/lib/transactions'
 
 const RANGE_KEYS = ['1W', '1M', '3M'] as const
-
-const categoryIcons: Record<string, LucideIcon> = {
-  Income: Wallet,
-  Housing: Home,
-  Groceries: ShoppingCart,
-  Dining: UtensilsCrossed,
-  Transport: Car,
-  Subscriptions: Tv,
-  Health: Heart,
-  Utilities: Zap,
-  Transfer: Repeat,
-  Shopping: ShoppingBag,
-  Services: WashingMachine,
-  Refund: ArrowDownLeft,
-}
-
-function TransactionRow({ txn, currency }: { txn: LedgerEntry; currency: string }) {
-  const Icon = categoryIcons[txn.category] ?? CreditCard
-  const incoming = txn.amount_cents > 0
-
-  return (
-    <li className="flex items-center gap-3 py-3">
-      <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/6 text-mist-300">
-        <Icon size={17} />
-      </span>
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium">{txn.merchant}</p>
-        <p className="mt-0.5 truncate text-xs text-mist-500">
-          {txn.category} ·{' '}
-          {new Date(txn.occurred_at).toLocaleDateString(undefined, {
-            day: 'numeric',
-            month: 'short',
-          })}
-        </p>
-      </div>
-      <span
-        className={`shrink-0 text-sm font-semibold tabular-nums ${
-          incoming ? 'text-gain-400' : 'text-mist-50'
-        }`}
-      >
-        {formatMoney(txn.amount_cents, currency, true)}
-      </span>
-    </li>
-  )
-}
 
 /**
  * Pure presentation over a ledger. Renders identically whichever dataset it is
@@ -133,19 +76,24 @@ export function AccountOverview({
   return (
     <div className="space-y-5">
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_minmax(0,1fr)]">
-        <div className="space-y-5">
+        <Reveal className="space-y-5">
           <Card className="p-5 sm:p-6">
-            <CardHeader
-              title="Total Balance"
-              action={
+            <CardHeader title="Total balance" action={
                 <Badge tone={rising ? 'gain' : 'loss'}>
                   {rising ? '+' : ''}
                   {changePct.toFixed(2)}%
                 </Badge>
               }
             />
-            <p className="mt-5 text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">
-              {formatMoney(balanceCents, currency)}
+            {/* Sizes are capped so the lakh-format balance always fits one line:
+                ~293px at 5xl overflows the column, but 4xl (~220px) leaves
+                room even at xl widths. nowrap guarantees no mid-number wrap. */}
+            <p className="text-display mt-4 text-3xl leading-none tabular-nums whitespace-nowrap sm:text-4xl">
+              <AnimatedNumber
+                value={balanceCents}
+                format={(v) => formatMoney(Math.round(v), currency)}
+                duration={1.2}
+              />
             </p>
             <p className="mt-2 text-sm text-mist-400">
               {account.name} · last {range}
@@ -153,18 +101,20 @@ export function AccountOverview({
 
             <div className="mt-5 grid grid-cols-2 gap-3">
               <div className="glass-tile p-3.5">
-                <div className="flex items-center gap-1.5 text-xs text-mist-400">
-                  <ArrowDownLeft size={13} className="text-gain-400" /> In
+                <div className="flex items-center gap-1.5 text-mist-400">
+                  <ArrowDownLeft size={13} className="text-gain-400" />
+                  <span className="kicker">In</span>
                 </div>
-                <p className="mt-1.5 text-base font-semibold tabular-nums">
+                <p className="mt-1.5 text-sm font-semibold tabular-nums whitespace-nowrap sm:text-base">
                   {formatMoney(moneyIn, currency)}
                 </p>
               </div>
               <div className="glass-tile p-3.5">
-                <div className="flex items-center gap-1.5 text-xs text-mist-400">
-                  <ArrowUpRight size={13} className="text-loss-400" /> Out
+                <div className="flex items-center gap-1.5 text-mist-400">
+                  <ArrowUpRight size={13} className="text-loss-400" />
+                  <span className="kicker">Out</span>
                 </div>
-                <p className="mt-1.5 text-base font-semibold tabular-nums">
+                <p className="mt-1.5 text-sm font-semibold tabular-nums whitespace-nowrap sm:text-base">
                   {formatMoney(Math.abs(moneyOut), currency)}
                 </p>
               </div>
@@ -181,11 +131,12 @@ export function AccountOverview({
               </p>
             </Card>
           )}
-        </div>
+        </Reveal>
 
-        <Card className="p-5 sm:p-6">
-          <CardHeader
-            title="Recent activity"
+        <Reveal delay={0.08} className="h-full">
+          <Card className="h-full p-5 sm:p-6">
+            <CardHeader
+              title="Recent activity"
             action={
               <Badge tone="neutral">
                 {inRange.length} in {range}
@@ -196,15 +147,17 @@ export function AccountOverview({
             <p className="py-10 text-center text-sm text-mist-500">Nothing in the last {range}.</p>
           ) : (
             <ul className="mt-2 max-h-[420px] divide-y divide-white/6 overflow-y-auto pr-1">
-              {inRange.map((txn) => (
-                <TransactionRow key={txn.id} txn={txn} currency={currency} />
+              {inRange.map((txn, index) => (
+                <TransactionRow key={txn.id} txn={txn} currency={currency} index={index} />
               ))}
             </ul>
           )}
-        </Card>
+          </Card>
+        </Reveal>
 
-        <Card className="p-5 sm:p-6">
-          <CardHeader title="Where it went" />
+        <Reveal delay={0.16} className="h-full">
+          <Card className="h-full p-5 sm:p-6">
+            <CardHeader title="Where it went" />
           {topCategories.length === 0 ? (
             <p className="py-10 text-center text-sm text-mist-500">No spending in this range.</p>
           ) : (
@@ -213,7 +166,7 @@ export function AccountOverview({
                 const Icon = categoryIcons[category] ?? CreditCard
                 return (
                   <div key={category} className="glass-tile p-4">
-                    <p className="text-lg font-bold tracking-tight tabular-nums">
+                    <p className="text-sm font-bold tracking-tight tabular-nums whitespace-nowrap sm:text-base">
                       {formatMoney(cents, currency)}
                     </p>
                     <div className="mt-2 flex items-center gap-1.5 text-xs text-mist-400">
@@ -226,22 +179,33 @@ export function AccountOverview({
             </div>
           )}
           <div className="glass-tile mt-3 flex items-center gap-3 p-4">
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white/6 text-accent-400">
+            <span className="accent-gradient grid size-9 shrink-0 place-items-center rounded-xl text-on-accent">
               <Sparkles size={16} />
             </span>
             <div className="min-w-0">
-              <p className="text-xs text-mist-400">Net movement</p>
-              <p className="truncate text-sm font-semibold tabular-nums">
-                {formatMoney(moneyIn + moneyOut, currency, true)}
+              <p className="kicker text-mist-400">Net movement</p>
+              <p
+                className={cn(
+                  'text-sm font-semibold tabular-nums whitespace-nowrap',
+                  moneyIn + moneyOut >= 0 ? 'text-gain-400' : 'text-loss-400',
+                )}
+              >
+                <AnimatedNumber
+                  value={moneyIn + moneyOut}
+                  format={(v) => formatMoney(Math.round(v), currency, true)}
+                  duration={1}
+                />
               </p>
             </div>
           </div>
-        </Card>
+          </Card>
+        </Reveal>
       </div>
 
-      <Card className="p-5 sm:p-6">
-        <CardHeader
-          title="Balance history"
+      <Reveal delay={0.1}>
+        <Card className="p-5 sm:p-6">
+          <CardHeader
+            title="Balance history"
           action={
             <PillTabs
               options={RANGE_KEYS}
@@ -253,10 +217,11 @@ export function AccountOverview({
           }
           className="flex-col items-start gap-3 sm:flex-row sm:items-center"
         />
-        <div className="mt-5">
-          <BalanceChart points={series} currency={currency} />
-        </div>
-      </Card>
+          <div className="mt-5">
+            <BalanceChart points={series} currency={currency} />
+          </div>
+        </Card>
+      </Reveal>
     </div>
   )
 }

@@ -1,11 +1,15 @@
-import { ShieldCheck } from 'lucide-react'
-
 export function Splash({ message = 'Loading…' }: { message?: string }) {
   return (
     <div className="grid min-h-dvh place-items-center p-8">
-      <div className="flex flex-col items-center gap-4">
-        <span className="accent-gradient grid size-12 animate-pulse place-items-center rounded-2xl text-ink-950">
-          <ShieldCheck size={24} strokeWidth={2.4} />
+      <div className="flex flex-col items-center gap-5">
+        <span className="logo-pulse grid size-16 place-items-center overflow-hidden rounded-2xl sm:size-20">
+          <img
+            src="/trustpass-logo.png"
+            alt="TrustPass logo"
+            width={512}
+            height={512}
+            className="size-full object-cover"
+          />
         </span>
         <p className="text-sm text-mist-400">{message}</p>
       </div>

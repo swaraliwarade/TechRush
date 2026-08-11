@@ -2,7 +2,7 @@ import { CircleCheck, Info, TriangleAlert } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { cn } from '@/lib/cn'
 
-type Tone = 'error' | 'success' | 'info'
+type Tone = 'error' | 'success' | 'info' | 'warn'
 
 const styles: Record<Tone, { wrap: string; icon: ReactNode }> = {
   error: {
@@ -16,6 +16,10 @@ const styles: Record<Tone, { wrap: string; icon: ReactNode }> = {
   info: {
     wrap: 'border-white/10 bg-white/5 text-mist-300',
     icon: <Info size={16} />,
+  },
+  warn: {
+    wrap: 'border-warn-400/20 bg-warn-400/8 text-warn-400',
+    icon: <TriangleAlert size={16} />,
   },
 }
 

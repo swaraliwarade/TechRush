@@ -40,7 +40,7 @@ export function PillTabs<T extends string>({
               'focus-ring rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition',
               variant === 'bare' && !active && 'border border-white/8 bg-white/4 text-mist-300',
               variant === 'boxed' && !active && 'text-mist-400 hover:text-mist-50',
-              active && 'accent-gradient text-ink-950 font-semibold',
+              active && 'accent-gradient text-on-accent font-semibold',
             )}
           >
             {option}

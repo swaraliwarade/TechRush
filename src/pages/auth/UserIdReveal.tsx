@@ -73,7 +73,7 @@ export function UserIdReveal({ onContinue }: { onContinue: () => void }) {
         <Wordmark />
 
         <Card className="p-6 sm:p-8" glow>
-          <span className="accent-gradient grid size-12 place-items-center rounded-2xl text-ink-950">
+          <span className="accent-gradient grid size-12 place-items-center rounded-2xl text-on-accent">
             <IdCard size={23} strokeWidth={2.2} />
           </span>
 

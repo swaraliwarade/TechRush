@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn'
 type CardProps = {
   children: ReactNode
   className?: string
-  /** Adds the soft purple bloom used on feature cards in the reference design. */
+  /** Adds the soft teal bloom used on feature cards in the reference design. */
   glow?: boolean
 }
 

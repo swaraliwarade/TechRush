@@ -6,7 +6,7 @@ type Size = 'sm' | 'md' | 'lg'
 
 const variants: Record<Variant, string> = {
   primary:
-    'accent-gradient text-ink-950 font-semibold shadow-[0_8px_24px_-8px_rgba(162,91,196,0.9)] hover:brightness-110',
+    'accent-gradient text-on-accent font-semibold shadow-[0_8px_24px_-8px_color-mix(in_srgb,var(--color-accent-500)_75%,transparent)] hover:brightness-110',
   ghost: 'text-mist-300 hover:bg-white/6 hover:text-mist-50',
   outline:
     'border border-white/10 bg-white/4 text-mist-50 hover:border-white/20 hover:bg-white/8',

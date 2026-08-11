@@ -59,7 +59,7 @@ export function TopBar({
           <Menu size={18} />
         </button>
         <div className="min-w-0">
-          <h1 className="truncate text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="text-display truncate text-2xl leading-none sm:text-3xl">
             {greeting}
           </h1>
           <p className="truncate text-sm text-mist-400">{subtitle}</p>
@@ -78,7 +78,7 @@ export function TopBar({
           <LogOut size={18} />
         </IconButton>
         <div className="flex items-center gap-3">
-          <span className="accent-gradient grid size-10 shrink-0 place-items-center rounded-full text-sm font-semibold text-ink-950">
+          <span className="accent-gradient grid size-10 shrink-0 place-items-center rounded-full text-sm font-semibold text-on-accent">
             {initials || 'TP'}
           </span>
           <div className="hidden leading-tight sm:block">

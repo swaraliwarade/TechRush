@@ -43,6 +43,28 @@ async function unwrapFunctionError(error: unknown): Promise<never> {
 
 export type SignInRequestResult = { ok: true; sent: boolean; hint?: string }
 
+/**
+ * Filled in by signin-verify when impossible travel is detected between this
+ * sign-in and the account's previous one. `flagged: false` is the normal case.
+ */
+export type TravelRisk = {
+  flagged: boolean
+  fromCity?: string
+  fromCountry?: string
+  toCity?: string
+  toCountry?: string
+  distanceKm?: number
+  speedKmh?: number
+  elapsedMin?: number
+  detectedAt?: string
+}
+
+export type VerifySignInResult = {
+  access_token: string
+  refresh_token: string
+  risk: TravelRisk
+}
+
 /** Resolves the User ID to its account email server-side and sends the code. */
 export async function requestSignInCode(userId: string): Promise<SignInRequestResult> {
   const { data, error } = await supabase.functions.invoke('signin-request', {
@@ -57,16 +79,17 @@ export async function requestSignInCode(userId: string): Promise<SignInRequestRe
  * back from the function because verifyOtp() needs the email, which this flow
  * intentionally never exposes to the browser.
  */
-export async function verifySignInCode(userId: string, code: string) {
+export async function verifySignInCode(userId: string, code: string): Promise<TravelRisk> {
   const { data, error } = await supabase.functions.invoke('signin-verify', {
     body: { userId, code },
   })
   if (error) await unwrapFunctionError(error)
 
-  const payload = data as { access_token: string; refresh_token: string }
+  const payload = data as VerifySignInResult
   const { error: sessionError } = await supabase.auth.setSession({
     access_token: payload.access_token,
     refresh_token: payload.refresh_token,
   })
   if (sessionError) throw sessionError
+  return payload.risk ?? { flagged: false }
 }
