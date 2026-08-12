@@ -10,7 +10,23 @@ export type SecurityEvent = {
   severity: Severity
   ip_prefix: string | null
   user_agent: string | null
+  /** Event-specific payload, e.g. the two locations on an impossible-travel event. */
+  detail: Record<string, unknown> | null
   created_at: string
+}
+
+/**
+ * Short labels for known event types — shared by the notifications bell and
+ * account search. (SecurityFeed keeps its own richer, deliberately
+ * non-explanatory copy.)
+ */
+export const securityEventLabels: Record<string, string> = {
+  duress_pin_used: 'Priority alert',
+  pin_failed: 'Incorrect PIN',
+  pin_lockout: 'Vault locked out',
+  vault_unlocked: 'Vault unlocked',
+  impossible_travel_detected: 'Impossible travel',
+  impossible_travel_verified: 'Impossible travel verified',
 }
 
 export async function fetchSecurityEvents(limit = 50): Promise<SecurityEvent[]> {

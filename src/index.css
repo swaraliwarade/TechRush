@@ -1,38 +1,136 @@
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------
-   TrustPass design tokens
-   Dark, near-black canvas + charcoal glass cards + purple→pink accent.
+   TrustPass design tokens — "Deepwater Blue"
+   The whole app now speaks one blue family, born from the landing
+   page's pastel teal: dark mode sinks it to deep blue-teal shades with
+   a teal→cyan gradient; light mode lifts it to the landing's blue
+   canvas with white glass surfaces. Cyan/teal is the visual language
+   of scanners and "verified" — it reads as security and trust.
+   Warm amber stays reserved for warnings.
    ------------------------------------------------------------------ */
 @theme {
-  /* Canvas */
-  --color-ink-950: #0a0709;
-  --color-ink-900: #100c0f;
-  --color-ink-850: #161215;
-  --color-ink-800: #1c171b;
-  --color-ink-700: #262027;
+  /* Canvas — deeper shades of the landing blue (dark mode) */
+  --color-ink-950: #071a23;
+  --color-ink-900: #0c2633;
+  --color-ink-850: #102e3d;
+  --color-ink-800: #15394c;
+  --color-ink-700: #1c4a61;
 
-  /* Text */
-  --color-mist-50: #f6f2f5;
-  --color-mist-300: #b8adb6;
-  --color-mist-400: #8d8290;
-  --color-mist-500: #6b626e;
+  /* Text — frosted cool white with a teal tint */
+  --color-mist-50: #eaf7fa;
+  --color-mist-300: #a9c9d4;
+  --color-mist-400: #7fa6b3;
+  --color-mist-500: #5b8290;
 
-  /* Accent */
-  --color-accent-400: #e9a8e0;
-  --color-accent-500: #c986d6;
-  --color-accent-600: #a25bc4;
+  /* Accent — biometric teal→cyan gradient (deep start, bright finish) */
+  --color-accent-400: #67e8f9;
+  --color-accent-500: #22d3ee;
+  --color-accent-600: #0e7490;
 
   /* Status */
-  --color-gain-400: #5fe3a1;
-  --color-loss-400: #ff7a8a;
-  --color-warn-400: #ffc46b;
+  --color-gain-400: #34d399;
+  --color-loss-400: #fb7185;
+  --color-warn-400: #fbbf24;
+
+  /* Fixed accents — identical in both themes */
+  --color-on-accent: #04242b; /* text sitting on the accent gradient */
+  --color-scrim: rgb(2 8 20 / 0.72); /* modal/nav scrim, dark in both themes */
 
   --radius-card: 20px;
   --radius-tile: 16px;
 
   --font-sans:
     'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* ------------------------------------------------------------------
+   Light theme — the same Deepwater identity on an inverted canvas.
+   `white`/`black` utilities compile to var(--color-white|black)
+   color-mix, so flipping those two variables re-tints every glass
+   surface app-wide without touching components. Accent and status
+   colours deepen so they stay readable on light backgrounds.
+   ------------------------------------------------------------------ */
+html[data-theme='light'] {
+  color-scheme: light;
+
+  /* Canvas — the landing page's blue, white glass surfaces */
+  --color-ink-950: #e9f4f4;
+  --color-ink-900: #ffffff;
+  --color-ink-850: #f0f8f8;
+  --color-ink-800: #e3f0f1;
+  --color-ink-700: #d4e7e9;
+
+  /* Text — deep teal charcoal on the blue canvas */
+  --color-mist-50: #14333c;
+  --color-mist-300: #2f5761;
+  --color-mist-400: #4e737c;
+  --color-mist-500: #6d8c94;
+
+  /* Accent — the landing page's teal */
+  --color-accent-400: #0e7490;
+  --color-accent-500: #0d9488;
+  --color-accent-600: #14b8a6;
+
+  /* Status — deepened for contrast on light */
+  --color-gain-400: #0e8f74;
+  --color-loss-400: #e11d48;
+  --color-warn-400: #d97706;
+
+  /* Glass tints — dark-on-light, same as the landing scope */
+  --color-white: #1a3b45;
+  --color-black: #ffffff;
+}
+
+/* The light canvas is the landing page's blue: a light-blue gradient
+   drifting down to near-white, echoing the dark theme's top-heavy
+   composition (two soft teal/cyan glows over a vertical fade), with
+   white glass cards floating on top. */
+html[data-theme='light'] body {
+  background-image:
+    radial-gradient(
+      60rem 40rem at 12% 8%,
+      rgba(116, 197, 219, 0.5),
+      transparent 60%
+    ),
+    radial-gradient(
+      50rem 34rem at 92% 92%,
+      rgba(34, 211, 238, 0.22),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #a8d5de 0%,
+      #d5e9ee 55%,
+      #f5fafb 100%
+    );
+}
+
+/* White glass for light mode — the landing's card treatment. */
+html[data-theme='light'] .glass-card {
+  background-color: rgb(255 255 255 / 86%);
+  border-color: rgb(20 60 70 / 8%);
+  box-shadow:
+    0 1px 0 0 rgb(255 255 255 / 0.6) inset,
+    0 20px 44px -28px rgb(23 58 66 / 0.22);
+}
+
+html[data-theme='light'] .glass-tile {
+  background-color: rgb(20 60 70 / 4%);
+  border-color: rgb(20 60 70 / 6%);
+}
+
+/* Crossfade the canvas and surfaces when the theme flips. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-theme] body,
+  html[data-theme] .glass-card,
+  html[data-theme] .glass-tile {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
 }
 
 @layer base {
@@ -42,17 +140,25 @@
 
   body {
     @apply bg-ink-950 text-mist-50 font-sans antialiased;
-    /* Ambient glow behind the whole app, echoing the reference shot. */
+    /* A deep-blue gradient rising behind everything, with teal and cyan
+       glows echoing the accent gradient — darker shades of the landing
+       blue, per the new scheme. */
     background-image:
       radial-gradient(
         60rem 40rem at 12% 8%,
-        rgba(162, 91, 196, 0.16),
+        rgba(14, 116, 144, 0.24),
         transparent 60%
       ),
       radial-gradient(
         50rem 34rem at 92% 92%,
-        rgba(233, 168, 224, 0.1),
+        rgba(103, 232, 249, 0.12),
         transparent 60%
+      ),
+      linear-gradient(
+        180deg,
+        var(--color-ink-900) 0%,
+        var(--color-ink-950) 48%,
+        #050f16 100%
       );
     background-attachment: fixed;
     min-height: 100dvh;
@@ -86,4 +192,161 @@
 
 @utility focus-ring {
   @apply outline-none focus-visible:ring-2 focus-visible:ring-accent-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+}
+
+/* ------------------------------------------------------------------
+   Editorial display type — the "expensive" end of the scale. Heavy,
+   tight-tracking headlines like the reference designs; pair with an
+   explicit leading utility (text sizes default to a looser leading).
+   ------------------------------------------------------------------ */
+@utility text-display {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+/* Small-caps micro-label above figures, e.g. NET MOVEMENT / TOTAL BALANCE. */
+@utility kicker {
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------
+   Pastel landing palette — used only by the marketing page (/).
+   A light, airy counterpoint to Deepwater: soft mint-white canvas,
+   a pastel teal hero band, white rounded cards, blush accents and a
+   charcoal footer, per the reference design.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-teal-100: #d6f0f3;
+  --color-teal-200: #a9dbe1;
+  --color-teal-300: #8fc9d3;
+  --color-teal-400: #77b9c6;
+  --color-teal-500: #5fa8b7;
+
+  --color-blush-100: #fff3f5;
+  --color-blush-200: #ffe7ec;
+  --color-blush-300: #ffd9e2;
+  --color-blush-400: #fb9db8;
+  --color-blush-500: #f472a6;
+
+  --color-night-900: #0f1c24;
+  --color-night-800: #16242e;
+  --color-night-700: #20313d;
+}
+
+/* ------------------------------------------------------------------
+   Landing scope — the marketing page is its own pastel-light world
+   no matter the app's dark/light preference. Re-declaring the tokens
+   inside the scope re-tints every glass surface within, so components
+   (Button, Card, Badge, Wordmark) keep composing from tokens instead
+   of restyling. `html .` prefixes keep these declarations ahead of the
+   `html[data-theme='light']` overrides in the cascade.
+   ------------------------------------------------------------------ */
+html .landing-pastel {
+  color-scheme: light;
+
+  /* Canvas — soft mint, white surfaces */
+  --color-ink-950: #e9f4f4;
+  --color-ink-900: #ffffff;
+  --color-ink-850: #f0f8f8;
+  --color-ink-800: #e3f0f1;
+  --color-ink-700: #d4e7e9;
+
+  /* Text — deep teal charcoal on light */
+  --color-mist-50: #14333c;
+  --color-mist-300: #2f5761;
+  --color-mist-400: #4e737c;
+  --color-mist-500: #6d8c94;
+
+  /* Accent — teal, deepened enough to stay readable on mint */
+  --color-accent-400: #0e7490;
+  --color-accent-500: #0d9488;
+  --color-accent-600: #14b8a6;
+
+  /* Status */
+  --color-gain-400: #0e8f74;
+  --color-loss-400: #e11d48;
+  --color-warn-400: #d97706;
+
+  --color-on-accent: #06282e;
+  --color-scrim: rgb(10 30 40 / 0.72);
+
+  /* Glass tints — dark-on-light, like the app's own light theme */
+  --color-white: #1a3b45;
+  --color-black: #ffffff;
+
+  /* The whole canvas is one smooth teal gradient — deeper blue on the
+     left, drifting lighter toward the right — running right up under
+     the sticky navbar (the header is transparent), with white glass
+     cards floating on top. No extra glow layers: anything else shows up
+     as a patch of a different shade. */
+  background-color: var(--color-teal-200);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-teal-500) 0%,
+    var(--color-teal-400) 16%,
+    var(--color-teal-300) 34%,
+    var(--color-teal-200) 56%,
+    var(--color-teal-100) 78%,
+    var(--color-ink-950) 100%
+  );
+}
+
+/* Opaque white glass with a soft drop for the light canvas. */
+html .landing-pastel .glass-card {
+  background-color: rgb(255 255 255 / 86%);
+  border-color: rgb(20 60 70 / 8%);
+  box-shadow:
+    0 1px 0 0 rgb(255 255 255 / 0.6) inset,
+    0 20px 44px -28px rgb(23 58 66 / 0.22);
+}
+
+html .landing-pastel .glass-tile {
+  background-color: rgb(20 60 70 / 4%);
+  border-color: rgb(20 60 70 / 6%);
+}
+
+/* The charcoal footer is dark again, so it flips its own glass tints. */
+html .landing-pastel .landing-night {
+  --color-mist-50: #eef6f8;
+  --color-mist-300: #b9cfd6;
+  --color-mist-400: #92b3bc;
+  --color-mist-500: #7195a0;
+  --color-white: #ffffff;
+  --color-black: #0f1c24;
+  background-color: var(--color-night-900);
+}
+
+/* ------------------------------------------------------------------
+   Splash logo pulse — the TrustPass mark breathing a soft cyan glow
+   while screens load. A radiating shadow (no layout shift) plus a
+   gentle scale; reduced-motion users get a static logo instead.
+   ------------------------------------------------------------------ */
+@keyframes trustpass-logo-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(0, 225, 255, 0.35),
+      0 0 24px 0 rgba(0, 225, 255, 0.18);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 16px rgba(0, 225, 255, 0),
+      0 0 40px 8px rgba(0, 225, 255, 0.3);
+    transform: scale(1.05);
+  }
+}
+
+.logo-pulse {
+  animation: trustpass-logo-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-pulse {
+    animation: none;
+  }
 }

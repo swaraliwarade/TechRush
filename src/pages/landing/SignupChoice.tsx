@@ -1,6 +1,6 @@
 import { ArrowLeft, Briefcase, Check, User } from 'lucide-react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Wordmark } from '@/components/layout/Sidebar'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
@@ -87,13 +87,13 @@ export function SignupChoice() {
                     <span
                       className={cn(
                         'grid size-10 place-items-center rounded-xl',
-                        active ? 'accent-gradient text-ink-950' : 'bg-white/6 text-mist-300',
+                        active ? 'accent-gradient text-on-accent' : 'bg-white/6 text-mist-300',
                       )}
                     >
                       <Icon size={19} />
                     </span>
                     {active && (
-                      <span className="accent-gradient grid size-5 place-items-center rounded-full text-ink-950">
+                      <span className="accent-gradient grid size-5 place-items-center rounded-full text-on-accent">
                         <Check size={12} strokeWidth={3.5} />
                       </span>
                     )}
@@ -118,6 +118,16 @@ export function SignupChoice() {
           <Button size="lg" className="mt-6 w-full" onClick={proceed}>
             Continue as {selected === 'personal' ? 'Personal' : 'Business'}
           </Button>
+
+          <p className="mt-5 text-center text-sm text-mist-400">
+            Already have an account?{' '}
+            <Link
+              to="/login"
+              className="focus-ring rounded-full font-medium text-accent-400 transition hover:text-accent-500"
+            >
+              Sign in instead
+            </Link>
+          </p>
         </Card>
       </div>
     </div>

@@ -111,7 +111,7 @@ export function PinGate({ onUnlocked }: { onUnlocked: (result: PinVerifyResult) 
     <div className="mx-auto max-w-md">
       <Card className="p-6 sm:p-8" glow>
         <div className="text-center">
-          <span className="accent-gradient mx-auto grid size-12 place-items-center rounded-2xl text-ink-950">
+          <span className="accent-gradient mx-auto grid size-12 place-items-center rounded-2xl text-on-accent">
             <Lock size={22} />
           </span>
           <h2 className="mt-5 text-xl font-semibold tracking-tight">Enter your vault PIN</h2>

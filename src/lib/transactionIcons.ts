@@ -1,0 +1,30 @@
+import {
+  ArrowDownLeft,
+  Car,
+  Heart,
+  Home,
+  Repeat,
+  ShoppingBag,
+  ShoppingCart,
+  Tv,
+  UtensilsCrossed,
+  Wallet,
+  WashingMachine,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react'
+
+export const categoryIcons: Record<string, LucideIcon> = {
+  Income: Wallet,
+  Housing: Home,
+  Groceries: ShoppingCart,
+  Dining: UtensilsCrossed,
+  Transport: Car,
+  Subscriptions: Tv,
+  Health: Heart,
+  Utilities: Zap,
+  Transfer: Repeat,
+  Shopping: ShoppingBag,
+  Services: WashingMachine,
+  Refund: ArrowDownLeft,
+}

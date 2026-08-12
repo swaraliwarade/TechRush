@@ -64,5 +64,9 @@ export function Dashboard() {
     )
   }
 
-  return <AccountOverview account={account} transactions={transactions} />
+  return (
+    <div className="space-y-5">
+      <AccountOverview account={account} transactions={transactions} />
+    </div>
+  )
 }

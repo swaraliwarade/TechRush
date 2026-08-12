@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import type { Theme } from './theme'
 
 export type AccountType = 'personal' | 'business'
 
@@ -8,6 +9,8 @@ export type Profile = {
   display_name: string | null
   /** Server-assigned public identifier used to sign in. Null until allocated. */
   user_id: string | null
+  /** Light/dark appearance preference. Null until the user picks one. */
+  theme: Theme | null
   created_at: string
   updated_at: string
 }
@@ -32,6 +35,20 @@ export async function setAccountType(userId: string, accountType: AccountType) {
     .from('profiles')
     .upsert(
       { id: userId, account_type: accountType, updated_at: new Date().toISOString() },
+      { onConflict: 'id' },
+    )
+    .select()
+    .single()
+
+  if (error) throw error
+  return data as Profile
+}
+
+export async function setProfileTheme(userId: string, theme: Theme) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .upsert(
+      { id: userId, theme, updated_at: new Date().toISOString() },
       { onConflict: 'id' },
     )
     .select()
