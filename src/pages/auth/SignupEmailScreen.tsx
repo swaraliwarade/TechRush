@@ -22,6 +22,10 @@ const OTP_LENGTH = env.otpLength
  *
  * The code screen is rate-limited: a wrong code forces a short wait before
  * retrying, and resend has a countdown.
+ *
+ * If the email already has an account, we don't send an OTP at all — we
+ * redirect to sign-in instead, so an existing user never sees a "create
+ * account" flow for an account they already have.
  */
 export function SignupEmailScreen() {
   const navigate = useNavigate()
@@ -39,8 +43,24 @@ export function SignupEmailScreen() {
     setNotice(null)
     setBusy(true)
     try {
+      const trimmedEmail = email.trim()
+
+      const { data: exists, error: checkError } = await supabase.rpc('email_has_account', {
+        p_email: trimmedEmail,
+      })
+      if (checkError) throw checkError
+
+      if (exists) {
+        navigate('/login', {
+          state: {
+            notice: "This email already has an account — enter your User ID to continue.",
+          },
+        })
+        return
+      }
+
       const { error: otpError } = await supabase.auth.signInWithOtp({
-        email: email.trim(),
+        email: trimmedEmail,
         options: {
           shouldCreateUser: true,
           emailRedirectTo: `${window.location.origin}/`,
@@ -48,7 +68,7 @@ export function SignupEmailScreen() {
       })
       if (otpError) throw otpError
       cooldown.codeSent()
-      setNotice(`Code sent to ${email.trim()}. It expires in 1 hour.`)
+      setNotice(`Code sent to ${trimmedEmail}. It expires in 1 hour.`)
       setStep('otp')
     } catch (err) {
       setError(readableAuthError(err))
