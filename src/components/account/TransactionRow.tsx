@@ -1,5 +1,6 @@
 import { CreditCard } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Badge } from '@/components/ui/Badge'
 import { formatMoney } from '@/lib/money'
 import { categoryIcons } from '@/lib/transactionIcons'
 import type { LedgerEntry } from '@/lib/transactions'
@@ -27,7 +28,14 @@ export function TransactionRow({
         <Icon size={17} />
       </span>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium">{txn.merchant}</p>
+        <p className="truncate text-sm font-medium">
+          {txn.merchant}
+          {txn.status === 'pending' && (
+            <Badge tone="warn" className="ml-2 align-middle">
+              Pending
+            </Badge>
+          )}
+        </p>
         <p className="mt-0.5 truncate text-xs text-mist-500">
           {txn.category} ·{' '}
           {new Date(txn.occurred_at).toLocaleDateString(undefined, {

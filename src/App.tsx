@@ -12,6 +12,7 @@ import { DevicesPage } from '@/pages/Devices'
 import { PasskeysPage } from '@/pages/Passkeys'
 import { SecurityFeed } from '@/pages/SecurityFeed'
 import { SetupRequired } from '@/pages/SetupRequired'
+import { TransactionsPage } from '@/pages/Transactions'
 import { Landing } from '@/pages/landing/Landing'
 import { SignupChoice } from '@/pages/landing/SignupChoice'
 import { Settings } from '@/pages/Settings'
@@ -70,6 +71,12 @@ function SignedInApp({ profile }: { profile: Profile }) {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           {/* Business accounts never render ledger data outside the vault. */}
           <Route path="/dashboard" element={isBusiness ? <BusinessDashboard /> : <Dashboard />} />
+          {/* Ledger views live behind the vault for business; personal accounts
+              get the full transactions page. */}
+          <Route
+            path="/transactions"
+            element={isBusiness ? <Navigate to="/dashboard" replace /> : <TransactionsPage />}
+          />
           <Route path="/passkeys" element={<PasskeysPage />} />
           <Route path="/devices" element={<DevicesPage />} />
           <Route

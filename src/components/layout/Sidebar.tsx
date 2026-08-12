@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
 import {
+  ArrowLeftRight,
   Fingerprint,
   LayoutDashboard,
   LifeBuoy,
@@ -14,10 +15,17 @@ import { DevicesMiniPanel, SecurityScoreCard } from './SecurityPanel'
 
 type AccountType = 'personal' | 'business'
 
-type NavItem = { to: string; label: string; icon: LucideIcon; businessOnly?: boolean }
+type NavItem = {
+  to: string
+  label: string
+  icon: LucideIcon
+  businessOnly?: boolean
+  personalOnly?: boolean
+}
 
 const primaryNav: NavItem[] = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/transactions', label: 'Transactions', icon: ArrowLeftRight, personalOnly: true },
   { to: '/vault', label: 'Vault', icon: ShieldCheck, businessOnly: true },
   { to: '/passkeys', label: 'Passkeys', icon: Fingerprint },
   { to: '/devices', label: 'Devices', icon: Smartphone },
@@ -78,7 +86,11 @@ export function SidebarContent({
   lastSignIn?: string | null
   onNavigate?: () => void
 }) {
-  const items = primaryNav.filter((item) => !item.businessOnly || accountType === 'business')
+  const items = primaryNav.filter(
+    (item) =>
+      (!item.businessOnly || accountType === 'business') &&
+      (!item.personalOnly || accountType === 'personal'),
+  )
 
   return (
     <div className="flex h-full flex-col gap-6 p-4">

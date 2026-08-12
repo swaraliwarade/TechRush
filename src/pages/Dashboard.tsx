@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { AccountOverview } from '@/components/account/AccountOverview'
-import { TransactionsSection } from '@/components/account/TransactionsSection'
 import { Alert } from '@/components/ui/Alert'
 import { Card } from '@/components/ui/Card'
 import { Splash } from '@/components/ui/Splash'
@@ -68,7 +67,6 @@ export function Dashboard() {
   return (
     <div className="space-y-5">
       <AccountOverview account={account} transactions={transactions} />
-      <TransactionsSection transactions={transactions} currency={account.currency} />
     </div>
   )
 }

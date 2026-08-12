@@ -1,5 +1,7 @@
-import { Bell, LogOut, Menu, Search } from 'lucide-react'
+import { LogOut, Menu } from 'lucide-react'
 import type { ReactNode } from 'react'
+import { AccountSearch } from './AccountSearch'
+import { NotificationsMenu } from './NotificationsMenu'
 
 type TopBarProps = {
   greeting: ReactNode
@@ -67,13 +69,8 @@ export function TopBar({
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">
-        <div className="hidden items-center gap-2 rounded-full border border-white/8 bg-white/5 px-4 py-2.5 text-sm text-mist-400 md:flex lg:w-72">
-          <Search size={16} />
-          <span>Search account activity</span>
-        </div>
-        <IconButton label="Notifications">
-          <Bell size={18} />
-        </IconButton>
+        <AccountSearch />
+        <NotificationsMenu />
         <IconButton label="Sign out" onClick={onSignOut}>
           <LogOut size={18} />
         </IconButton>
