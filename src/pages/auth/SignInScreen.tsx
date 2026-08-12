@@ -1,6 +1,6 @@
 import { ArrowLeft, Fingerprint, IdCard, MapPin, ShieldAlert } from 'lucide-react'
 import { useEffect, useState, type FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Wordmark } from '@/components/layout/Sidebar'
 import { Alert } from '@/components/ui/Alert'
 import { Button } from '@/components/ui/Button'
@@ -35,6 +35,7 @@ function travelTimeLabel(minutes?: number): string | null {
 
 export function SignInScreen() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [step, setStep] = useState<Step>('userId')
   const [userId, setUserId] = useState('')
   const [code, setCode] = useState('')
@@ -46,6 +47,13 @@ export function SignInScreen() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const cooldown = useOtpCooldown()
+
+  // Captured once, from SignupEmailScreen's redirect when the entered email
+  // already has an account. Lazy init means it only reads location.state on
+  // first mount, not on every re-render.
+  const [signupNotice] = useState<string | null>(
+    () => (location.state as { notice?: string } | null)?.notice ?? null,
+  )
 
   const support = passkeySupport()
 
@@ -234,6 +242,7 @@ export function SignInScreen() {
               </div>
 
               {error && <Alert tone="error">{error}</Alert>}
+              {signupNotice && !error && <Alert tone="info">{signupNotice}</Alert>}
 
               <Input
                 label="User ID"
